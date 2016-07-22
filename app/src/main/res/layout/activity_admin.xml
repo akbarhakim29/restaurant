@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.bymankind.restaurant.AdminActivity"
+    android:clickable="false"
+    android:focusable="false">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="CRUD POSISI"
+        android:id="@+id/tv_header1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#e1a626"
+        android:padding="6dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Create Posisi"
+        android:id="@+id/tvCreatePosisi"
+        android:layout_below="@+id/tv_header1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:focusable="false"
+        android:padding="4dp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Read Posisi"
+        android:id="@+id/tvReadPosisi"
+        android:layout_below="@+id/tvCreatePosisi"
+        android:layout_alignLeft="@+id/tvCreatePosisi"
+        android:layout_alignStart="@+id/tvCreatePosisi"
+        android:padding="4dp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Update Posisi"
+        android:id="@+id/tvUpdatePosisi"
+        android:layout_below="@+id/tvReadPosisi"
+        android:layout_alignLeft="@+id/tvReadPosisi"
+        android:layout_alignStart="@+id/tvReadPosisi"
+        android:padding="4dp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Delete Posisi"
+        android:id="@+id/tvDeletePosisi"
+        android:layout_below="@+id/tvUpdatePosisi"
+        android:layout_alignLeft="@+id/tvUpdatePosisi"
+        android:layout_alignStart="@+id/tvUpdatePosisi"
+        android:padding="4dp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="CRUD MENU MAKANAN"
+        android:id="@+id/tv_header2"
+        android:background="#e1a626"
+        android:padding="6dp"
+        android:layout_below="@+id/tvDeletePosisi"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Create Menu Makanan"
+        android:id="@+id/tvCreateMenuMakanan"
+        android:focusable="false"
+        android:padding="4dp"
+        android:layout_below="@+id/tv_header2"
+        android:layout_alignLeft="@+id/tvDeletePosisi"
+        android:layout_alignStart="@+id/tvDeletePosisi"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Read Menu Makanan"
+        android:id="@+id/tvReadMenuMakanan"
+        android:focusable="false"
+        android:padding="4dp"
+        android:layout_below="@+id/tvCreateMenuMakanan"
+        android:layout_alignLeft="@+id/tvCreateMenuMakanan"
+        android:layout_alignStart="@+id/tvCreateMenuMakanan"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Update Menu Makanan"
+        android:id="@+id/tvUpdateMenuMakanan"
+        android:focusable="false"
+        android:padding="4dp"
+        android:layout_below="@+id/tvReadMenuMakanan"
+        android:layout_alignLeft="@+id/tvReadMenuMakanan"
+        android:layout_alignStart="@+id/tvReadMenuMakanan"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Delete Menu Makanan"
+        android:id="@+id/tvDeleteMenuMakanan"
+        android:focusable="false"
+        android:padding="4dp"
+        android:layout_below="@+id/tvUpdateMenuMakanan"
+        android:layout_alignLeft="@+id/tvUpdateMenuMakanan"
+        android:layout_alignStart="@+id/tvUpdateMenuMakanan"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="CRUD MEJA"
+        android:id="@+id/tv_header3"
+        android:background="#e1a626"
+        android:padding="6dp"
+        android:layout_below="@+id/tvDeleteMenuMakanan"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Create Meja"
+        android:id="@+id/tvCreateMeja"
+        android:focusable="false"
+        android:padding="4dp"
+        android:textStyle="bold|italic"
+        android:layout_below="@+id/tv_header3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Read Meja"
+        android:id="@+id/tvReadMeja"
+        android:focusable="false"
+        android:padding="4dp"
+        android:textStyle="bold|italic"
+        android:layout_below="@+id/tvCreateMeja"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Delete Meja"
+        android:id="@+id/tvDeleteMeja"
+        android:focusable="false"
+        android:padding="4dp"
+        android:layout_below="@+id/tvReadMeja"
+        android:textStyle="bold|italic"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp" />
+
+
+</RelativeLayout>
