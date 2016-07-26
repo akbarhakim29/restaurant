@@ -3,12 +3,23 @@ package com.bymankind.restaurant;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.bymankind.restaurant.posisi.CreatePosisiActivity;
 import com.bymankind.restaurant.posisi.DeletePosisiActivity;
+import com.bymankind.restaurant.posisi.ReadPosisiActivity;
+import com.bymankind.restaurant.posisi.ReadPosisiRequest;
 import com.bymankind.restaurant.posisi.UpdatePosisiActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class AdminActivity extends AppCompatActivity {
 
@@ -43,6 +54,31 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            JSONArray jsonArray = jsonResponse.getJSONArray("data");
+                            boolean success = jsonResponse.getBoolean("success");
+
+                            for (int i=0;i<jsonArray.length();i++){
+                                JSONObject json_data =  jsonArray.getJSONObject(i);
+                                String posisi[i] = json_data.getString("posisi");
+                                String password[i] = json_data.getString("password");
+                            }
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                ReadPosisiRequest readPosisiRequest = new ReadPosisiRequest(posisi,password,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(AdminActivity.this);
+                queue.add(readPosisiRequest);
+                /*Intent readPosisiIntent = new Intent(AdminActivity.this , ReadPosisiActivity.class);
+                startActivity(readPosisiIntent);*/
             }
         });
 

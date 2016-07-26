@@ -22,8 +22,9 @@
         <activity android:name=".PramusajiActivity" />
         <activity android:name=".KasirActivity" />
         <activity android:name=".posisi.CreatePosisiActivity" />
-        <activity android:name=".posisi.UpdatePosisiActivity"></activity>
-        <activity android:name=".posisi.DeletePosisiActivity"></activity>
+        <activity android:name=".posisi.UpdatePosisiActivity" />
+        <activity android:name=".posisi.DeletePosisiActivity" />
+        <activity android:name=".posisi.ReadPosisiActivity"></activity>
     </application>
 
 </manifest>
