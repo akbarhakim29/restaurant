@@ -13,7 +13,7 @@ public class ParseJSONReadPosisi {
     public static String[] password;
 
     public static final String JSON_ARRAY = "data";
-    public static final String KEY_ID = "id_posisi";
+    public static final String KEY_ID = "id_admin";
     public static final String KEY_POSISI = "posisi";
     public static final String KEY_PASSWORD = "password";
 
@@ -30,7 +30,6 @@ public class ParseJSONReadPosisi {
         try {
             jsonObject = new JSONObject(json);
             users = jsonObject.getJSONArray(JSON_ARRAY);
-
 
             id = new String[users.length()];
             posisi = new String[users.length()];

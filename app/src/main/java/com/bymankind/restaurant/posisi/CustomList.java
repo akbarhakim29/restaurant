@@ -13,16 +13,16 @@ import com.bymankind.restaurant.R;
  * Created by Server-Panduit on 7/27/2016.
  */
 public class CustomList extends ArrayAdapter<String>{
-    public static String[] id_posisi;
+    public static String[] id_admin;
     public static String[] posisi;
     public static String[] password;
 
     private Activity context;
 
-    public CustomList(Activity context, String[] id_posisi, String[] posisi, String[] password) {
-        super(context, R.layout.read_posisi_list, id_posisi);
+    public CustomList(Activity context, String[] id_admin, String[] posisi, String[] password) {
+        super(context, R.layout.read_posisi_list, id_admin);
         this.context = context;
-        this.id_posisi = id_posisi;
+        this.id_admin = id_admin;
         this.posisi = posisi;
         this.password = password;
     }
@@ -35,7 +35,7 @@ public class CustomList extends ArrayAdapter<String>{
         TextView textViewPosisi = (TextView) listViewItem.findViewById(R.id.tvPosisi);
         TextView textViewPassword = (TextView) listViewItem.findViewById(R.id.tvPassword);
 
-        textViewId.setText(id_posisi[position]);
+        textViewId.setText(id_admin[position]);
         textViewPosisi.setText(posisi[position]);
         textViewPassword.setText(password[position]);
 

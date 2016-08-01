@@ -24,7 +24,10 @@
         <activity android:name=".posisi.CreatePosisiActivity" />
         <activity android:name=".posisi.UpdatePosisiActivity" />
         <activity android:name=".posisi.DeletePosisiActivity" />
-        <activity android:name=".posisi.ReadPosisiActivity"></activity>
+        <activity android:name=".posisi.ReadPosisiActivity" />
+        <activity android:name=".menuMakanan.CreateMenuMakanan" />
+        <activity android:name=".menuMakanan.ReadMenuMakanan" />
+        <activity android:name=".menuMakanan.UpdateMenuMakanan" />
     </application>
 
 </manifest>

@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by Server-Panduit on 7/22/2016.
  */
 public class DeletePosisiRequest extends StringRequest {
-    private final static String DELETE_REQUEST_URL = "http://192.168.1.173/login/sql_restaurant.php?operasi=delete_posisi";
+    private final static String DELETE_REQUEST_URL = "http://192.168.100.4/login/sql_restaurant.php?operasi=delete_posisi";
     private Map<String, String> params;
 
     public DeletePosisiRequest(String posisi, Response.Listener<String> listener){

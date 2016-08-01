@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.bymankind.restaurant.menuMakanan.CreateMenuMakanan;
+import com.bymankind.restaurant.menuMakanan.ReadMenuMakanan;
+import com.bymankind.restaurant.menuMakanan.UpdateMenuMakanan;
 import com.bymankind.restaurant.posisi.CreatePosisiActivity;
 import com.bymankind.restaurant.posisi.DeletePosisiActivity;
 import com.bymankind.restaurant.posisi.ReadPosisiActivity;
@@ -53,7 +56,6 @@ public class AdminActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent updatePosisiIntent = new Intent(AdminActivity.this , UpdatePosisiActivity.class);
                 startActivity(updatePosisiIntent);
-
             }
         });
 
@@ -65,6 +67,31 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
+/* ----------------------------------------------------------------------------------------------------------- */
+
+        createMenuMakananLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent createMenuIntent = new Intent(AdminActivity.this , CreateMenuMakanan.class);
+                startActivity(createMenuIntent);
+            }
+        });
+
+        readMenuMakananLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent readmenuIntent = new Intent(AdminActivity.this , ReadMenuMakanan.class);
+                startActivity(readmenuIntent);
+            }
+        });
+
+        updateMenuMakananLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent updateMenuIntent = new Intent(AdminActivity.this , UpdateMenuMakanan.class);
+                startActivity(updateMenuIntent);
+            }
+        });
 
     }
 }

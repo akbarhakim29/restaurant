@@ -41,25 +41,25 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
-                            int id_posisi =jsonResponse.getInt("id_posisi");
+                            int id_admin =jsonResponse.getInt("id_admin");
                             String posisi = jsonResponse.getString("posisi");
 
-                            if (success && id_posisi==1){
+                            if (success && posisi.equals("koki")){
                                 Intent kokiIntent = new Intent(LoginActivity.this, KokiActivity.class);
                                 kokiIntent.putExtra("posisi", posisi);
                                 startActivity(kokiIntent);
                             }
-                            else if (success && id_posisi==2){
+                            else if (success && posisi.equals("pramusaji")){
                                 Intent pramusajiIntent = new Intent(LoginActivity.this, PramusajiActivity.class);
                                 pramusajiIntent.putExtra("posisi",posisi);
                                 LoginActivity.this.startActivity(pramusajiIntent);
                             }
-                            else if (success && id_posisi==3){
+                            else if (success && posisi.equals("kasir")){
                                 Intent kasirIntent = new Intent(LoginActivity.this, KasirActivity.class);
                                 kasirIntent.putExtra("posisi",posisi);
                                 LoginActivity.this.startActivity(kasirIntent);
                             }
-                            else if (success && id_posisi==4){
+                            else if (success && posisi.equals("admin")){
                                 Intent adminIntent = new Intent(LoginActivity.this, AdminActivity.class);
                                 adminIntent.putExtra("posisi",posisi);
                                 LoginActivity.this.startActivity(adminIntent);
