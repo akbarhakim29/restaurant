@@ -13,10 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/etNamaMakanan"
-        android:layout_alignParentTop="true"
+        android:hint="Nama Makanan"
+        android:layout_below="@+id/etIDMakanan"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:hint="Nama Makanan" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="match_parent"
@@ -24,32 +24,37 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/etHargaMakanan"
+        android:hint="Harga Makanan"
         android:layout_below="@+id/etNamaMakanan"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/etNamaMakanan"
-        android:layout_alignEnd="@+id/etNamaMakanan"
-        android:hint="Harga Makanan" />
+        android:layout_alignParentStart="true" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/etDeskripsiMakanan"
-        android:layout_below="@+id/etHargaMakanan"
-        android:layout_alignRight="@+id/etHargaMakanan"
-        android:layout_alignEnd="@+id/etHargaMakanan"
         android:hint="Deskripsi"
+        android:layout_below="@+id/etHargaMakanan"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="create"
+        android:text="submit"
         android:id="@+id/buttonCreateMakanan"
         android:layout_below="@+id/etDeskripsiMakanan"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etIDMakanan"
+        android:hint="ID Makanan"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

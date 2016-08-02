@@ -21,7 +21,7 @@ public class CustomListMenu extends ArrayAdapter<String>{
     private Activity context;
 
     public CustomListMenu(Activity context, String[] id_makanan, String[] nama, String[] harga, String[] deskripsi) {
-        super(context, R.layout.read_menu_makanan_list, nama);
+        super(context, R.layout.read_menu_makanan_list, id_makanan);
         this.context = context;
         this.id_makanan = id_makanan;
         this.nama = nama;

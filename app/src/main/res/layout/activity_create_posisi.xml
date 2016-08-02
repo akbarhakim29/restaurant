@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:text="CREATE"
             android:id="@+id/buttonCreate"
-            android:layout_below="@+id/etPassword"
+            android:layout_below="@+id/etIDPosisi"
             android:layout_centerHorizontal="true" />
 
         <TextView
@@ -45,6 +45,15 @@
             android:text="Position Will be created :"
             android:id="@+id/textView4"
             android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etIDPosisi"
+            android:hint="ID Posisi"
+            android:layout_below="@+id/etPassword"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 

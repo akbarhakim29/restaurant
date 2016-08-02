@@ -27,11 +27,13 @@ public class CreatePosisiActivity extends AppCompatActivity {
 
         final EditText etPosisi = (EditText) findViewById(R.id.etPosisi);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
+        final EditText etIDPosisi = (EditText) findViewById(R.id.etIDPosisi);
         final Button buttonCreated = (Button) findViewById(R.id.buttonCreate);
 
         buttonCreated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final int id = Integer.parseInt(etIDPosisi.getText().toString());
                 final String posisi = etPosisi.getText().toString();
                 final String password = etPassword.getText().toString();
 
@@ -60,7 +62,7 @@ public class CreatePosisiActivity extends AppCompatActivity {
                         }
                     }
                 };
-                CreatePosisiRequest createPosisiRequest = new CreatePosisiRequest(posisi,password,responseListener);
+                CreatePosisiRequest createPosisiRequest = new CreatePosisiRequest(id,posisi,password,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(CreatePosisiActivity.this);
                 queue.add(createPosisiRequest);
             }

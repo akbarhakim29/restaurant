@@ -104,7 +104,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Read Menu Makanan"
+        android:text="RUDe Menu Makanan"
         android:id="@+id/tvReadMenuMakanan"
         android:focusable="false"
         android:padding="4dp"
@@ -116,41 +116,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Update Menu Makanan"
-        android:id="@+id/tvUpdateMenuMakanan"
-        android:focusable="false"
-        android:padding="4dp"
-        android:layout_below="@+id/tvReadMenuMakanan"
-        android:layout_alignLeft="@+id/tvReadMenuMakanan"
-        android:layout_alignStart="@+id/tvReadMenuMakanan"
-        android:textStyle="bold|italic" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Delete Menu Makanan"
-        android:id="@+id/tvDeleteMenuMakanan"
-        android:focusable="false"
-        android:padding="4dp"
-        android:layout_below="@+id/tvUpdateMenuMakanan"
-        android:layout_alignLeft="@+id/tvUpdateMenuMakanan"
-        android:layout_alignStart="@+id/tvUpdateMenuMakanan"
-        android:textStyle="bold|italic" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="CRUD MEJA"
         android:id="@+id/tv_header3"
         android:background="#e1a626"
         android:padding="6dp"
-        android:layout_below="@+id/tvDeleteMenuMakanan"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_below="@+id/tvReadMenuMakanan" />
 
     <TextView
         android:layout_width="match_parent"

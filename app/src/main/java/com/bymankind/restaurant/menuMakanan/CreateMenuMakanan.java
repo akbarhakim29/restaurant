@@ -18,6 +18,8 @@ import com.bymankind.restaurant.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 public class CreateMenuMakanan extends AppCompatActivity {
 
     @Override
@@ -25,6 +27,7 @@ public class CreateMenuMakanan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_menu_makanan);
 
+        final EditText etIDMakanan = (EditText) findViewById(R.id.etIDMakanan);
         final EditText etNamaMakanan = (EditText) findViewById(R.id.etNamaMakanan);
         final EditText etHargaMakanan = (EditText) findViewById(R.id.etHargaMakanan);
         final EditText etDeskripsi = (EditText) findViewById(R.id.etDeskripsiMakanan);
@@ -33,18 +36,20 @@ public class CreateMenuMakanan extends AppCompatActivity {
         buttonCreated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final int id_makanan = Integer.parseInt(etIDMakanan.getText().toString());
                 final String nama = etNamaMakanan.getText().toString();
                 final String harga = etHargaMakanan.getText().toString();
                 final String deskripsi = etDeskripsi.getText().toString();
+                final String token = "07bac98b53f572adb9db70a79bb78680013184e9";
 
                 Response.Listener<String> responseListener= new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
+                            String status = jsonObject.getString("status");
 
-                            if (success){
+                            if (status.equals("success")){
                                 Toast.makeText(CreateMenuMakanan.this,"data inserted" ,Toast.LENGTH_LONG).show();
                                 Intent successIntent = new Intent(CreateMenuMakanan.this, AdminActivity.class);
                                 CreateMenuMakanan.this.startActivity(successIntent);
@@ -62,7 +67,7 @@ public class CreateMenuMakanan extends AppCompatActivity {
                         }
                     }
                 };
-                CreateMenuMakananRequest createMenuMakananRequest = new CreateMenuMakananRequest(nama,harga,deskripsi,responseListener);
+                CreateMenuMakananRequest createMenuMakananRequest = new CreateMenuMakananRequest(token,id_makanan,nama,harga,deskripsi,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(CreateMenuMakanan.this);
                 queue.add(createMenuMakananRequest);
             }

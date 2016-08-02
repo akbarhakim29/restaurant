@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.bymankind.restaurant.menuMakanan.CreateMenuMakanan;
 import com.bymankind.restaurant.menuMakanan.ReadMenuMakanan;
-import com.bymankind.restaurant.menuMakanan.UpdateMenuMakanan;
 import com.bymankind.restaurant.posisi.CreatePosisiActivity;
 import com.bymankind.restaurant.posisi.DeletePosisiActivity;
 import com.bymankind.restaurant.posisi.ReadPosisiActivity;
@@ -28,8 +27,6 @@ public class AdminActivity extends AppCompatActivity {
 
         final TextView createMenuMakananLink = (TextView) findViewById(R.id.tvCreateMenuMakanan);
         final TextView readMenuMakananLink = (TextView) findViewById(R.id.tvReadMenuMakanan);
-        final TextView updateMenuMakananLink = (TextView) findViewById(R.id.tvUpdateMenuMakanan);
-        final TextView deleteMenuMakananLink = (TextView) findViewById(R.id.tvDeleteMenuMakanan);
 
         final TextView createMejaLink = (TextView) findViewById(R.id.tvCreateMeja);
         final TextView readMejaLink = (TextView) findViewById(R.id.tvReadMeja);
@@ -85,13 +82,6 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
-        updateMenuMakananLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent updateMenuIntent = new Intent(AdminActivity.this , UpdateMenuMakanan.class);
-                startActivity(updateMenuIntent);
-            }
-        });
 
     }
 }

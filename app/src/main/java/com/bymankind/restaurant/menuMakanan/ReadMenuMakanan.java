@@ -1,5 +1,7 @@
 package com.bymankind.restaurant.menuMakanan;
 
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bymankind.restaurant.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import static java.lang.Integer.parseInt;
 
 public class ReadMenuMakanan extends AppCompatActivity {
     public static final String JSON_URL = "http://192.168.100.4/login/sql_restaurant.php?operasi=menu_makanan";
@@ -55,7 +62,46 @@ public class ReadMenuMakanan extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(ReadMenuMakanan.this,cl.getItem(i),Toast.LENGTH_SHORT).show();
+                Toast.makeText(ReadMenuMakanan.this,"id = "+cl.getItem(i),Toast.LENGTH_SHORT).show();
+                final String id =  cl.getItem(i);
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+
+                            if (success){
+
+                                int id_makanan = jsonResponse.getInt("id_makanan");
+                                String nama = jsonResponse.getString("nama");
+                                String harga = jsonResponse.getString("harga");
+                                String deskripsi = jsonResponse.getString("deskripsi");
+
+                                Intent detailMenuIntent = new Intent(ReadMenuMakanan.this, DetailMenuMakanan.class);
+                                detailMenuIntent.putExtra("id", id_makanan);
+                                detailMenuIntent.putExtra("nama", nama);
+                                detailMenuIntent.putExtra("harga", harga);
+                                detailMenuIntent.putExtra("deskripsi", deskripsi);
+
+                                ReadMenuMakanan.this.startActivity(detailMenuIntent);
+                            }
+                            else {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(ReadMenuMakanan.this);
+                                builder.setMessage("nothing data")
+                                        .setNegativeButton("Retry",null)
+                                        .create()
+                                        .show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                DetailMenuMakananRequest detailMenuMakananRequest = new DetailMenuMakananRequest(id,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(ReadMenuMakanan.this);
+                queue.add(detailMenuMakananRequest);
             }
         });
     }

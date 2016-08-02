@@ -45,7 +45,7 @@ public class UpdatePosisiActivity extends AppCompatActivity {
                             boolean success = jsonObject.getBoolean("success");
 
                             if (success){
-                                Toast.makeText(UpdatePosisiActivity.this,"Menu updated" ,Toast.LENGTH_LONG).show();
+                                Toast.makeText(UpdatePosisiActivity.this,"Posisi updated" ,Toast.LENGTH_LONG).show();
                                 Intent successIntent = new Intent(UpdatePosisiActivity.this, AdminActivity.class);
                                 UpdatePosisiActivity.this.startActivity(successIntent);
                             }

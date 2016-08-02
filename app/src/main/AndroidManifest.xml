@@ -27,7 +27,7 @@
         <activity android:name=".posisi.ReadPosisiActivity" />
         <activity android:name=".menuMakanan.CreateMenuMakanan" />
         <activity android:name=".menuMakanan.ReadMenuMakanan" />
-        <activity android:name=".menuMakanan.UpdateMenuMakanan" />
+        <activity android:name=".menuMakanan.DetailMenuMakanan"></activity>
     </application>
 
 </manifest>
