@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,23 +32,31 @@ public class CreateMenuMakanan extends AppCompatActivity {
         final EditText etNamaMakanan = (EditText) findViewById(R.id.etNamaMakanan);
         final EditText etHargaMakanan = (EditText) findViewById(R.id.etHargaMakanan);
         final EditText etDeskripsi = (EditText) findViewById(R.id.etDeskripsiMakanan);
+        final EditText etToken = (EditText) findViewById(R.id.etToken);
         final Button buttonCreated = (Button) findViewById(R.id.buttonCreateMakanan);
+
+        String token = "f31294ac0a9255aa810e2cd9639485260ff9b3c1";
+        etToken.setText(token);
 
         buttonCreated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 final int id_makanan = Integer.parseInt(etIDMakanan.getText().toString());
                 final String nama = etNamaMakanan.getText().toString();
-                final String harga = etHargaMakanan.getText().toString();
+                final int harga = Integer.parseInt(etHargaMakanan.getText().toString());
                 final String deskripsi = etDeskripsi.getText().toString();
-                final String token = "07bac98b53f572adb9db70a79bb78680013184e9";
+                final String token = etToken.getText().toString();
 
                 Response.Listener<String> responseListener= new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            String status = jsonObject.getString("status");
+                            JSONObject jsonObject1 = jsonObject.getJSONObject("response");
+
+                            String status = jsonObject1.getString("status");
 
                             if (status.equals("success")){
                                 Toast.makeText(CreateMenuMakanan.this,"data inserted" ,Toast.LENGTH_LONG).show();

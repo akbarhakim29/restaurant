@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.bymankind.restaurant.AdminActivity;
 import com.bymankind.restaurant.R;
 
@@ -41,10 +43,11 @@ public class DetailMenuMakanan extends AppCompatActivity {
         etHargaMakanan.setText(harga);
         etDeskripsiMakanan.setText(deskripsi);
 
+        // action update
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String idMakanan = etIDMakanan.getText().toString();
+                final int idMakanan = Integer.parseInt(etIDMakanan.getText().toString());
                 final String namaMakanan = etNamaMakanan.getText().toString();
                 final String hargaMakanan = etHargaMakanan.getText().toString();
                 final String deskripsiMakanan = etDeskripsiMakanan.getText().toString();
@@ -69,15 +72,42 @@ public class DetailMenuMakanan extends AppCompatActivity {
                         }
                     }
                 };
-
+                UpdateMenuMakananRequest updateMenuMakananRequest= new UpdateMenuMakananRequest(idMakanan,namaMakanan,hargaMakanan,deskripsiMakanan,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(DetailMenuMakanan.this);
+                queue.add(updateMenuMakananRequest);
             }
         });
 
+        // action delete
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final int idMakanan = Integer.parseInt(etIDMakanan.getText().toString());
+                Response.Listener<String> deleteResponse = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            boolean success = jsonObject.getBoolean("success");
 
+                            if (success){
+                                Toast.makeText(DetailMenuMakanan.this,"Menu deleted" ,Toast.LENGTH_LONG).show();
+                                Intent successIntent = new Intent(DetailMenuMakanan.this, AdminActivity.class);
+                                DetailMenuMakanan.this.startActivity(successIntent);
+                            }
+                            else{
+                                Toast.makeText(DetailMenuMakanan.this,"Menu not updated" ,Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                DeleteMenuMakananRequest deleteMenuMakananRequest= new DeleteMenuMakananRequest(idMakanan,deleteResponse);
+                RequestQueue queue = Volley.newRequestQueue(DetailMenuMakanan.this);
+                queue.add(deleteMenuMakananRequest);
             }
         });
+
     }
 }
