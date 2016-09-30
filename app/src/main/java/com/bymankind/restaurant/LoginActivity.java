@@ -7,13 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,13 +24,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
-        final EditText etPassword = (EditText) findViewById(R.id.etPassword);
+        final EditText etPassword = (EditText) findViewById(R.id.etSalary);
         final Button buttonLogin = (Button) findViewById(R.id.buttonLogin);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String posisi = etUsername.getText().toString();
+                final String username = etUsername.getText().toString();
                 final String password = etPassword.getText().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -40,43 +39,43 @@ public class LoginActivity extends AppCompatActivity {
 
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
-                            int id_admin =jsonResponse.getInt("id_admin");
-                            String posisi = jsonResponse.getString("posisi");
+                            JSONArray jsonChildObject = jsonResponse.getJSONArray("data");
+                            JSONObject jo = jsonChildObject.getJSONObject(0);
+                            int code = jsonResponse.getInt("code");
 
-                            if (success && posisi.equals("koki")){
+                            int id_position =jo.getInt("id_position");
+                            String username = jo.getString("username");
+
+                            if (code == 200 && id_position == 6){
                                 Intent kokiIntent = new Intent(LoginActivity.this, KokiActivity.class);
-                                kokiIntent.putExtra("posisi", posisi);
+                                kokiIntent.putExtra("username", username);
                                 startActivity(kokiIntent);
                             }
-                            else if (success && posisi.equals("pramusaji")){
+                            else if (code == 200 && id_position == 4){
                                 Intent pramusajiIntent = new Intent(LoginActivity.this, PramusajiActivity.class);
-                                pramusajiIntent.putExtra("posisi",posisi);
+                                pramusajiIntent.putExtra("username",username);
                                 LoginActivity.this.startActivity(pramusajiIntent);
                             }
-                            else if (success && posisi.equals("kasir")){
+                            else if (code == 200 && id_position == 5){
                                 Intent kasirIntent = new Intent(LoginActivity.this, KasirActivity.class);
-                                kasirIntent.putExtra("posisi",posisi);
+                                kasirIntent.putExtra("username",username);
                                 LoginActivity.this.startActivity(kasirIntent);
                             }
-                            else if (success && posisi.equals("admin")){
+                            else if (code == 200 && id_position == 7){
                                 Intent adminIntent = new Intent(LoginActivity.this, AdminActivity.class);
-                                adminIntent.putExtra("posisi",posisi);
+                                adminIntent.putExtra("username",username);
                                 LoginActivity.this.startActivity(adminIntent);
                             }
                             else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage("login failed")
-                                        .setNegativeButton("Retry",null)
-                                        .create()
-                                        .show();
+                                builder.setMessage("login failed").setNegativeButton("Retry",null).create().show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
                 };
-                LoginRequest loginRequest = new LoginRequest(posisi,password,responseListener);
+                LoginRequest loginRequest = new LoginRequest(username,password,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
 

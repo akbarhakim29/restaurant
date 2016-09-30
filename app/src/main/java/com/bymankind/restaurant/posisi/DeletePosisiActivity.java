@@ -31,23 +31,23 @@ public class DeletePosisiActivity extends AppCompatActivity {
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String deletePosisi = etDelete.getText().toString();
+                final int id_position = Integer.parseInt(etDelete.getText().toString());
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
+                            JSONObject jsonResponse = new JSONObject(response);
+                            int code = jsonResponse.getInt("code");
 
-                            if (success){
+                            if (code==200){
                                 Toast.makeText(DeletePosisiActivity.this,"data deleted" ,Toast.LENGTH_LONG).show();
                                 Intent successIntent = new Intent(DeletePosisiActivity.this, AdminActivity.class);
                                 DeletePosisiActivity.this.startActivity(successIntent);
                             }
                             else{
                                 AlertDialog.Builder builder = new AlertDialog.Builder(DeletePosisiActivity.this);
-                                builder.setMessage("login failed")
+                                builder.setMessage("no data in database")
                                         .setNegativeButton("Retry",null)
                                         .create()
                                         .show();
@@ -57,7 +57,7 @@ public class DeletePosisiActivity extends AppCompatActivity {
                         }
                     }
                 };
-                DeletePosisiRequest deletePosisiRequest = new DeletePosisiRequest(deletePosisi,responseListener);
+                DeletePosisiRequest deletePosisiRequest = new DeletePosisiRequest(id_position,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(DeletePosisiActivity.this);
                 queue.add(deletePosisiRequest);
             }

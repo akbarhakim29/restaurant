@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import static java.lang.Integer.parseInt;
 
 public class ReadMenuMakanan extends AppCompatActivity {
-    public static final String JSON_URL = "http://192.168.100.4/login/sql_restaurant.php?operasi=menu_makanan";
+    public static final String JSON_URL = "http://192.168.100.9/restoserver/api/getAllMenu";
     private ListView listView;
 
     @Override
@@ -57,7 +57,7 @@ public class ReadMenuMakanan extends AppCompatActivity {
     private void showJSON(String json){
         ParseJSONReadMenu pj = new ParseJSONReadMenu(json);
         pj.parseJSON();
-        final CustomListMenu cl = new CustomListMenu(this, ParseJSONReadMenu.id_makanan,ParseJSONReadMenu.nama,ParseJSONReadMenu.harga,ParseJSONReadMenu.deskripsi);
+        final CustomListMenu cl = new CustomListMenu(this, ParseJSONReadMenu.id_menu,ParseJSONReadMenu.name,ParseJSONReadMenu.price,ParseJSONReadMenu.description);
         listView.setAdapter(cl);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -73,16 +73,16 @@ public class ReadMenuMakanan extends AppCompatActivity {
 
                             if (success){
 
-                                int id_makanan = jsonResponse.getInt("id_makanan");
-                                String nama = jsonResponse.getString("nama");
-                                String harga = jsonResponse.getString("harga");
-                                String deskripsi = jsonResponse.getString("deskripsi");
+                                int id_menu = jsonResponse.getInt("id_menu");
+                                String name = jsonResponse.getString("name");
+                                String price = jsonResponse.getString("price");
+                                String description = jsonResponse.getString("description");
 
                                 Intent detailMenuIntent = new Intent(ReadMenuMakanan.this, DetailMenuMakanan.class);
-                                detailMenuIntent.putExtra("id", id_makanan);
-                                detailMenuIntent.putExtra("nama", nama);
-                                detailMenuIntent.putExtra("harga", harga);
-                                detailMenuIntent.putExtra("deskripsi", deskripsi);
+                                detailMenuIntent.putExtra("id", id_menu);
+                                detailMenuIntent.putExtra("nama", name);
+                                detailMenuIntent.putExtra("harga", price);
+                                detailMenuIntent.putExtra("deskripsi", description);
 
                                 ReadMenuMakanan.this.startActivity(detailMenuIntent);
                             }

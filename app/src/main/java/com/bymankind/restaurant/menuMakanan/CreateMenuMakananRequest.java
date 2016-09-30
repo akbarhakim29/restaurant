@@ -10,17 +10,17 @@ import java.util.Map;
  * Created by Server-Panduit on 7/27/2016.
  */
 public class CreateMenuMakananRequest extends StringRequest{
-    private final static String CREATE_FOOD_REQUEST_URL = "http://188.166.176.9/API/public/menu/submit";
+    private final static String CREATE_FOOD_REQUEST_URL = "http://192.168.100.9/restoserver/api/insertMenu";
     private Map<String, String> params;
 
-    public CreateMenuMakananRequest(String token,int id_makanan,String nama, int harga, String deskripsi, Response.Listener<String> listener){
-        super(Method.POST , CREATE_FOOD_REQUEST_URL, listener , null);
-        params = new HashMap<>();
-        params.put("token",token);
-        params.put("id_makanan",id_makanan+"");
-        params.put("nama",nama);
-        params.put("harga",harga+"");
-        params.put("deskripsi",deskripsi);
+     public CreateMenuMakananRequest(int id_kind_of_menu,String name, int price, String picture,String description, Response.Listener<String> listener){
+         super(Method.POST , CREATE_FOOD_REQUEST_URL, listener , null);
+         params = new HashMap<>();
+         params.put("id_kind_of_menu",id_kind_of_menu+"");
+         params.put("name",name);
+         params.put("price",price+"");
+         params.put("picture",picture);
+         params.put("description",description);
     }
 
     @Override

@@ -15,9 +15,9 @@ public class KokiActivity extends AppCompatActivity {
         final TextView welcomeMsg = (TextView) findViewById(R.id.tvWelcomeMsg);
 
         Intent intent = getIntent();
-        String posisi =  intent.getStringExtra("posisi");
+        String username =  intent.getStringExtra("username");
 
-        String message =  posisi + " welcome to your user area";
+        String message =  username + " welcome to your user area";
         welcomeMsg.setText(message);
     }
 }

@@ -11,7 +11,7 @@ import java.util.Map;
  * Created by Server-Panduit on 8/3/2016.
  */
 public class DeleteMenuMakananRequest extends StringRequest{
-    private final static String DELETE_REQUEST_URL = "http://192.168.100.4/login/sql_restaurant.php?operasi=delete_menu_makanan";
+    private final static String DELETE_REQUEST_URL = "http://192.168.100.9/restoserver/api/deleteMenu";
     private Map<String, String> params;
 
     public DeleteMenuMakananRequest(int id_makanan, Response.Listener<String> listener){

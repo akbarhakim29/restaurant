@@ -12,9 +12,20 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etNamaMakanan"
-        android:hint="Nama Makanan"
-        android:layout_below="@+id/etIDMakanan"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/etPicture"
+        android:hint="Picture"
+        android:layout_below="@+id/etPrice"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etName"
+        android:hint="Food Name"
+        android:layout_below="@+id/etID_Kind_of_menu"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -23,9 +34,18 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/etHargaMakanan"
-        android:hint="Harga Makanan"
-        android:layout_below="@+id/etNamaMakanan"
+        android:id="@+id/etPrice"
+        android:hint="Price"
+        android:layout_below="@+id/etName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etID_Kind_of_menu"
+        android:hint="ID Kind of Menu"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -34,9 +54,9 @@
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/etDeskripsiMakanan"
-        android:hint="Deskripsi"
-        android:layout_below="@+id/etHargaMakanan"
+        android:id="@+id/etDescription"
+        android:hint="Description"
+        android:layout_below="@+id/etPicture"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -44,25 +64,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="submit"
-        android:id="@+id/buttonCreateMakanan"
-        android:layout_below="@+id/etToken"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/etIDMakanan"
-        android:hint="ID Makanan"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/etToken"
-        android:layout_below="@+id/etDeskripsiMakanan"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/buttonCreate"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="119dp"
+        android:layout_marginEnd="119dp" />
 
 </RelativeLayout>

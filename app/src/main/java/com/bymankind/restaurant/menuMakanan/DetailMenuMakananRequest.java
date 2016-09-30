@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by Server-Panduit on 8/2/2016.
  */
 public class DetailMenuMakananRequest extends StringRequest{
-    private final static String DETAIL_MENU_REQUEST_URL = "http://192.168.100.4/login/sql_restaurant.php?operasi=read_item_menu_makanan";
+    private final static String DETAIL_MENU_REQUEST_URL = "http://192.168.100.9/restoserver/api/getMenu";
     private Map<String, String> params;
 
     public DetailMenuMakananRequest(String id_makanan, Response.Listener<String> listener){

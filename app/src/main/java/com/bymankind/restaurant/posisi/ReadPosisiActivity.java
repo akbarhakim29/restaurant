@@ -15,7 +15,7 @@ import com.android.volley.toolbox.Volley;
 import com.bymankind.restaurant.R;
 
 public class ReadPosisiActivity extends AppCompatActivity{
-    public static final String JSON_URL = "http://188.166.176.9/API/public/admin/lists";
+    public static final String JSON_URL = "http://192.168.100.9/restoserver/api/getAllPosition";
     private ListView listView;
 
     @Override
@@ -48,7 +48,7 @@ public class ReadPosisiActivity extends AppCompatActivity{
     private void showJSON(String json){
         ParseJSONReadPosisi pj = new ParseJSONReadPosisi(json);
         pj.parseJSON();
-        CustomList cl = new CustomList(this, ParseJSONReadPosisi.id,ParseJSONReadPosisi.posisi,ParseJSONReadPosisi.password);
+        CustomList cl = new CustomList(this, ParseJSONReadPosisi.id_position,ParseJSONReadPosisi.name,ParseJSONReadPosisi.salary);
         listView.setAdapter(cl);
     }
 }

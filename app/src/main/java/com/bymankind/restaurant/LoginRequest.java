@@ -10,13 +10,13 @@ import java.util.Map;
  * Created by Server-Panduit on 7/20/2016.
  */
 public class LoginRequest extends StringRequest {
-    private final static String LOGIN_REQUEST_URL = "http://192.168.100.4/login/sql_restaurant.php?operasi=login";
+    private final static String LOGIN_REQUEST_URL = "http://192.168.100.9/restoserver/api/getEmployee";
     private Map<String, String> params;
 
-    public LoginRequest(String posisi, String password, Response.Listener<String> listener){
+    public LoginRequest(String username, String password, Response.Listener<String> listener){
         super(Method.POST , LOGIN_REQUEST_URL, listener , null);
         params = new HashMap<>();
-        params.put("posisi",posisi);
+        params.put("username",username);
         params.put("password",password);
     }
 

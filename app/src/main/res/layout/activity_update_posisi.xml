@@ -14,8 +14,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etPosisi"
-        android:hint="Old Position"
+        android:id="@+id/etPosition"
+        android:hint="ID Position"
         android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -26,7 +26,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Change to :"
         android:id="@+id/textView"
-        android:layout_below="@+id/etPosisi"
+        android:layout_below="@+id/etPosition"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="15dp" />
@@ -34,7 +34,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etNewPosisi"
+        android:id="@+id/etNewPosition"
         android:hint="New Position"
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
@@ -43,20 +43,20 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/etPassword"
-        android:hint="New Password"
-        android:layout_below="@+id/etNewPosisi"
+        android:id="@+id/etSalary"
+        android:hint="New Salary"
+        android:layout_below="@+id/etNewPosition"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:inputType="number" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="UPDATE"
         android:id="@+id/buttonUpdate"
-        android:layout_below="@+id/etPassword"
+        android:layout_below="@+id/etSalary"
         android:layout_centerHorizontal="true" />
 
     <TextView

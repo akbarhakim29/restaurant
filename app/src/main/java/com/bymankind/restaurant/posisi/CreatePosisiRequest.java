@@ -10,15 +10,14 @@ import java.util.Map;
  * Created by Server-Panduit on 7/21/2016.
  */
 public class CreatePosisiRequest extends StringRequest{
-    private final static String CREATE_REQUEST_URL = "http://192.168.100.4/login/sql_restaurant.php?operasi=create_posisi";
+    private final static String CREATE_REQUEST_URL = "http://192.168.100.9/restoserver/api/insertPosition";
     private Map<String, String> params;
 
-    public CreatePosisiRequest(int id,String posisi, String password, Response.Listener<String> listener){
+    public CreatePosisiRequest(String name, int salary, Response.Listener<String> listener){
         super(Method.POST , CREATE_REQUEST_URL, listener , null);
         params = new HashMap<>();
-        params.put("id_posisi",id+"");
-        params.put("posisi",posisi);
-        params.put("password",password);
+        params.put("name",name);
+        params.put("salary",salary+"");
     }
 
     @Override

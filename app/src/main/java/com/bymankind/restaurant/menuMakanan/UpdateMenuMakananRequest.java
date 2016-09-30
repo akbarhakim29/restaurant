@@ -11,7 +11,7 @@ import java.util.Map;
  * Created by Server-Panduit on 8/3/2016.
  */
 public class UpdateMenuMakananRequest extends StringRequest{
-    private final static String UPDATE_REQUEST_URL = "http://192.168.100.4/login/sql_restaurant.php?operasi=update_menu_makanan";
+    private final static String UPDATE_REQUEST_URL = "http://192.168.100.9/restoserver/api/updateMenu";
     private Map<String, String> params;
 
     public UpdateMenuMakananRequest(int id_makanan, String nama, String harga,String deskripsi, Response.Listener<String> listener){

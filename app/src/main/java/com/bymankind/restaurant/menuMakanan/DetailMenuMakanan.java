@@ -24,10 +24,10 @@ public class DetailMenuMakanan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_menu_makanan);
 
-        final EditText etIDMakanan = (EditText) findViewById(R.id.etIdMakanan);
-        final EditText etNamaMakanan = (EditText) findViewById(R.id.etNamaMakanan);
-        final EditText etHargaMakanan =  (EditText) findViewById(R.id.etHargaMakanan);
-        final EditText etDeskripsiMakanan = (EditText) findViewById(R.id.etDeskripsiMakanan);
+        final EditText etIDMakanan = (EditText) findViewById(R.id.etIDMenu);
+        final EditText etNamaMakanan = (EditText) findViewById(R.id.etName);
+        final EditText etHargaMakanan =  (EditText) findViewById(R.id.etPrice);
+        final EditText etDeskripsiMakanan = (EditText) findViewById(R.id.etDescription);
 
         final Button buttonUpdate = (Button) findViewById(R.id.buttonUpdateMakanan);
         final Button buttonDelete = (Button) findViewById(R.id.buttonDeleteMakanan);

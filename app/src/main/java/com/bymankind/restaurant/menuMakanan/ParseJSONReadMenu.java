@@ -8,16 +8,16 @@ import org.json.JSONObject;
  * Created by Server-Panduit on 7/27/2016.
  */
 public class ParseJSONReadMenu {
-    public static String[] id_makanan;
-    public static String[] nama;
-    public static String[] harga;
-    public static String[] deskripsi;
+    public static String[] id_menu;
+    public static String[] name;
+    public static String[] price;
+    public static String[] description;
 
     public static final String JSON_ARRAY = "data";
-    public static final String KEY_ID = "id_makanan";
-    public static final String KEY_NAMA = "nama";
-    public static final String KEY_HARGA = "harga";
-    public static final String KEY_DESKRIPSI = "deskripsi";
+    public static final String KEY_ID = "id_menu";
+    public static final String KEY_NAME = "name";
+    public static final String KEY_PRICE = "price";
+    public static final String KEY_DESCRIPTION = "description";
 
     private JSONArray users = null;
 
@@ -33,18 +33,17 @@ public class ParseJSONReadMenu {
             jsonObject = new JSONObject(json);
             users = jsonObject.getJSONArray(JSON_ARRAY);
 
-
-            id_makanan = new String[users.length()];
-            nama = new String[users.length()];
-            harga = new String[users.length()];
-            deskripsi = new String[users.length()];
+            id_menu = new String[users.length()];
+            name = new String[users.length()];
+            price = new String[users.length()];
+            description = new String[users.length()];
 
             for(int i=0;i<users.length();i++){
                 JSONObject jo = users.getJSONObject(i);
-                id_makanan[i] = jo.getString(KEY_ID);
-                nama[i] = jo.getString(KEY_NAMA);
-                harga[i] = jo.getString(KEY_HARGA);
-                deskripsi[i] = jo.getString(KEY_DESKRIPSI);
+                id_menu[i] = jo.getString(KEY_ID);
+                name[i] = jo.getString(KEY_NAME);
+                price[i] = jo.getString(KEY_PRICE);
+                description[i] = jo.getString(KEY_DESCRIPTION);
             }
         }
         catch (JSONException e){

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,8 +18,6 @@ import com.bymankind.restaurant.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Objects;
-
 public class CreateMenuMakanan extends AppCompatActivity {
 
     @Override
@@ -28,25 +25,22 @@ public class CreateMenuMakanan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_menu_makanan);
 
-        final EditText etIDMakanan = (EditText) findViewById(R.id.etIDMakanan);
-        final EditText etNamaMakanan = (EditText) findViewById(R.id.etNamaMakanan);
-        final EditText etHargaMakanan = (EditText) findViewById(R.id.etHargaMakanan);
-        final EditText etDeskripsi = (EditText) findViewById(R.id.etDeskripsiMakanan);
-        final EditText etToken = (EditText) findViewById(R.id.etToken);
-        final Button buttonCreated = (Button) findViewById(R.id.buttonCreateMakanan);
-
-        String token = "f31294ac0a9255aa810e2cd9639485260ff9b3c1";
-        etToken.setText(token);
+        final EditText etID_Kind_of_Menu = (EditText) findViewById(R.id.etID_Kind_of_menu);
+        final EditText etName = (EditText) findViewById(R.id.etName);
+        final EditText etPrice = (EditText) findViewById(R.id.etPrice);
+        final EditText etDescription = (EditText) findViewById(R.id.etDescription);
+        final EditText etPicture = (EditText) findViewById(R.id.etToken);
+        final Button buttonCreated = (Button) findViewById(R.id.buttonCreate);
 
         buttonCreated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                final int id_makanan = Integer.parseInt(etIDMakanan.getText().toString());
-                final String nama = etNamaMakanan.getText().toString();
-                final int harga = Integer.parseInt(etHargaMakanan.getText().toString());
-                final String deskripsi = etDeskripsi.getText().toString();
-                final String token = etToken.getText().toString();
+                final int id_kind_of_menu = Integer.parseInt(etID_Kind_of_Menu.getText().toString());
+                final String name = etName.getText().toString();
+                final int price = Integer.parseInt(etPrice.getText().toString());
+                final String description = etDescription.getText().toString();
+                final String picture = etPicture.getText().toString();
 
                 Response.Listener<String> responseListener= new Response.Listener<String>() {
                     @Override
@@ -76,7 +70,7 @@ public class CreateMenuMakanan extends AppCompatActivity {
                         }
                     }
                 };
-                CreateMenuMakananRequest createMenuMakananRequest = new CreateMenuMakananRequest(token,id_makanan,nama,harga,deskripsi,responseListener);
+                CreateMenuMakananRequest createMenuMakananRequest = new CreateMenuMakananRequest(id_kind_of_menu,name,price,picture,description,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(CreateMenuMakanan.this);
                 queue.add(createMenuMakananRequest);
             }

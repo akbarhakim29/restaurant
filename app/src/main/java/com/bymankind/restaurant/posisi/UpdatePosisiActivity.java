@@ -1,7 +1,6 @@
 package com.bymankind.restaurant.posisi;
 
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,32 +24,32 @@ public class UpdatePosisiActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_posisi);
 
-        final EditText etOldPosisi = (EditText) findViewById(R.id.etPosisi);
-        final EditText etNewPosisi = (EditText) findViewById(R.id.etNewPosisi);
-        final EditText etPassword = (EditText) findViewById(R.id.etPassword);
+        final EditText etID = (EditText) findViewById(R.id.etPosition);
+        final EditText etNewPosition = (EditText) findViewById(R.id.etNewPosition);
+        final EditText etNewSalary = (EditText) findViewById(R.id.etSalary);
         final Button buttonUpdate = (Button) findViewById(R.id.buttonUpdate);
 
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String oldPosisi = etOldPosisi.getText().toString();
-                final String newPosisi = etNewPosisi.getText().toString();
-                final String newPassword = etPassword.getText().toString();
+                final int id_position = Integer.parseInt(etID.getText().toString());
+                final String newPosition = etNewPosition.getText().toString();
+                final int newSalary = Integer.parseInt(etNewSalary.getText().toString());
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
+                            JSONObject jsonResponse = new JSONObject(response);
+                            int code = jsonResponse.getInt("code");
 
-                            if (success){
-                                Toast.makeText(UpdatePosisiActivity.this,"Posisi updated" ,Toast.LENGTH_LONG).show();
+                            if (code==200){
+                                Toast.makeText(UpdatePosisiActivity.this,"Position updated" ,Toast.LENGTH_LONG).show();
                                 Intent successIntent = new Intent(UpdatePosisiActivity.this, AdminActivity.class);
                                 UpdatePosisiActivity.this.startActivity(successIntent);
                             }
                             else{
-                                Toast.makeText(UpdatePosisiActivity.this,"Menu not updated" ,Toast.LENGTH_LONG).show();
+                                Toast.makeText(UpdatePosisiActivity.this,"position not updated" ,Toast.LENGTH_LONG).show();
                             }
 
                         } catch (JSONException e) {
@@ -58,7 +57,7 @@ public class UpdatePosisiActivity extends AppCompatActivity {
                         }
                     }
                 };
-                UpdatePosisiRequest updatePosisiRequest = new UpdatePosisiRequest(oldPosisi,newPosisi,newPassword,responseListener);
+                UpdatePosisiRequest updatePosisiRequest = new UpdatePosisiRequest(id_position,newPosition,newSalary,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(UpdatePosisiActivity.this);
                 queue.add(updatePosisiRequest);
             }

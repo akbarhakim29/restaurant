@@ -10,13 +10,13 @@ import java.util.Map;
  * Created by Server-Panduit on 7/22/2016.
  */
 public class DeletePosisiRequest extends StringRequest {
-    private final static String DELETE_REQUEST_URL = "http://192.168.100.4/login/sql_restaurant.php?operasi=delete_posisi";
+    private final static String DELETE_REQUEST_URL = "http://192.168.100.9/restoserver/api/deletePosition";
     private Map<String, String> params;
 
-    public DeletePosisiRequest(String posisi, Response.Listener<String> listener){
+    public DeletePosisiRequest(int id_position, Response.Listener<String> listener){
         super(Method.POST , DELETE_REQUEST_URL, listener , null);
         params = new HashMap<>();
-        params.put("posisi",posisi);
+        params.put("id_position",id_position+"");
     }
 
     @Override
