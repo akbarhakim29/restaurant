@@ -1,172 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.bymankind.restaurant.AdminActivity"
-    android:clickable="false"
-    android:focusable="false">
+    android:id="@+id/root_layout">
 
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/restaurant"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="CRUD POSITION"
-        android:id="@+id/tv_header1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="#e1a626"
-        android:padding="6dp"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:padding="5dp">
 
-    <TextView
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/btn_position"
+                android:layout_width="@dimen/image_button_menu"
+                android:layout_height="@dimen/image_button_menu"
+                android:background="@drawable/chef" />
+
+            <TextView
+                style="@style/MenuText.Theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/position"
+                android:paddingTop="@dimen/padding_top_menu"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:layout_width="@dimen/image_button_menu"
+                android:layout_height="@dimen/image_button_menu"
+                android:id="@+id/btn_menu"
+                android:background="@drawable/menu"/>
+
+            <TextView
+                style="@style/MenuText.Theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/menu"
+                android:paddingTop="@dimen/padding_top_menu" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Create Position"
-        android:id="@+id/tvCreatePosisi"
-        android:layout_below="@+id/tv_header1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="15dp"
-        android:focusable="false"
-        android:padding="4dp"
-        android:textStyle="bold|italic" />
+        android:orientation="horizontal"
+        android:padding="5dp">
 
-    <TextView
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/btn_employee"
+                android:layout_width="@dimen/image_button_menu"
+                android:layout_height="@dimen/image_button_menu"
+                android:background="@drawable/businessman" />
+
+            <TextView
+                style="@style/MenuText.Theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/employee"
+                android:paddingTop="@dimen/padding_top_menu" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:layout_width="@dimen/image_button_menu"
+                android:layout_height="@dimen/image_button_menu"
+                android:id="@+id/btn_kindofmenu"
+                android:background="@drawable/chicken"/>
+
+            <TextView
+                style="@style/MenuText.Theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kindofmenu"
+                android:paddingTop="@dimen/padding_top_menu" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Read Position"
-        android:id="@+id/tvReadPosisi"
-        android:layout_below="@+id/tvCreatePosisi"
-        android:layout_alignLeft="@+id/tvCreatePosisi"
-        android:layout_alignStart="@+id/tvCreatePosisi"
-        android:padding="4dp"
-        android:textStyle="bold|italic" />
+        android:orientation="horizontal"
+        android:padding="5dp">
 
-    <TextView
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/btn_customer"
+                android:layout_width="@dimen/image_button_menu"
+                android:layout_height="@dimen/image_button_menu"
+                android:background="@drawable/membercard" />
+
+            <TextView
+                style="@style/MenuText.Theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/customer"
+                android:paddingTop="@dimen/padding_top_menu" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:layout_width="@dimen/image_button_menu"
+                android:layout_height="@dimen/image_button_menu"
+                android:id="@+id/btn_table"
+                android:background="@drawable/table"/>
+
+            <TextView
+                style="@style/MenuText.Theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/table"
+                android:paddingTop="@dimen/padding_top_menu" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Update Position"
-        android:id="@+id/tvUpdatePosisi"
-        android:layout_below="@+id/tvReadPosisi"
-        android:layout_alignLeft="@+id/tvReadPosisi"
-        android:layout_alignStart="@+id/tvReadPosisi"
-        android:padding="4dp"
-        android:textStyle="bold|italic" />
+        android:orientation="horizontal"
+        android:padding="5dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Delete Position"
-        android:id="@+id/tvDeletePosisi"
-        android:layout_below="@+id/tvUpdatePosisi"
-        android:layout_alignLeft="@+id/tvUpdatePosisi"
-        android:layout_alignStart="@+id/tvUpdatePosisi"
-        android:padding="4dp"
-        android:textStyle="bold|italic" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:gravity="center">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="CRUD MENU"
-        android:id="@+id/tv_header2"
-        android:background="#e1a626"
-        android:padding="6dp"
-        android:layout_below="@+id/tvDeletePosisi"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold" />
+            <ImageButton
+                android:id="@+id/btn_order"
+                android:layout_width="@dimen/image_button_menu"
+                android:layout_height="@dimen/image_button_menu"
+                android:background="@drawable/order" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Create Menu"
-        android:id="@+id/tvCreateMenuMakanan"
-        android:focusable="false"
-        android:padding="4dp"
-        android:layout_below="@+id/tv_header2"
-        android:layout_alignLeft="@+id/tvDeletePosisi"
-        android:layout_alignStart="@+id/tvDeletePosisi"
-        android:textStyle="bold|italic" />
+            <TextView
+                style="@style/MenuText.Theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order"
+                android:paddingTop="@dimen/padding_top_menu" />
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="CRUD TABLE"
-        android:id="@+id/tv_header3"
-        android:background="#e1a626"
-        android:padding="6dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold"
-        android:layout_below="@+id/tvReadMenuMakanan" />
+        <LinearLayout
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Create Table"
-        android:id="@+id/tvCreateMeja"
-        android:focusable="false"
-        android:padding="4dp"
-        android:textStyle="bold|italic"
-        android:layout_below="@+id/tv_header3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="15dp" />
+            <ImageButton
+                android:layout_width="@dimen/image_button_menu"
+                android:layout_height="@dimen/image_button_menu"
+                android:id="@+id/btn_inventory"
+                android:background="@drawable/microwave"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Read Table"
-        android:id="@+id/tvReadMeja"
-        android:focusable="false"
-        android:padding="4dp"
-        android:textStyle="bold|italic"
-        android:layout_below="@+id/tvCreateMeja"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="15dp" />
+            <TextView
+                style="@style/MenuText.Theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/inventory"
+                android:paddingTop="@dimen/padding_top_menu" />
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Delete Table"
-        android:id="@+id/tvDeleteMeja"
-        android:focusable="false"
-        android:padding="4dp"
-        android:layout_below="@+id/tvReadMeja"
-        android:textStyle="bold|italic"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="15dp" />
+    </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="RUDe Menu"
-        android:id="@+id/tvReadMenuMakanan"
-        android:focusable="false"
-        android:padding="4dp"
-        android:textStyle="bold|italic"
-        android:layout_below="@+id/tvCreateMenuMakanan"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-
-</RelativeLayout>
+</LinearLayout>

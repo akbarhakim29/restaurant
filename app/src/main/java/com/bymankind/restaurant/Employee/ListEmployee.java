@@ -1,11 +1,13 @@
-package com.bymankind.restaurant.menuMakanan;
+package com.bymankind.restaurant.Employee;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,20 +23,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static java.lang.Integer.parseInt;
 
-public class ReadMenuMakanan extends AppCompatActivity {
-    public static final String JSON_URL = "http://192.168.100.14/restoserver/api/getAllMenu";
+public class ListEmployee extends AppCompatActivity {
+    public static final String JSON_URL = "http://192.168.100.14/restoserver/api/getAllEmployee";
     private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_read_menu_makanan);
+        setContentView(R.layout.list_employee);
 
-        listView =  (ListView) findViewById(R.id.lvMenuMakanan);
+        listView =  (ListView) findViewById(R.id.lvEmployee);
         sendRequest();
-
     }
 
     private void sendRequest(){
@@ -48,7 +48,7 @@ public class ReadMenuMakanan extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ReadMenuMakanan.this,error.getMessage(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(ListEmployee.this,error.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -56,15 +56,15 @@ public class ReadMenuMakanan extends AppCompatActivity {
     }
 
     private void showJSON(String json){
-        ParseJSONReadMenu pj = new ParseJSONReadMenu(json);
+        ParseJSONEmployee pj = new ParseJSONEmployee(json);
         pj.parseJSON();
-        final CustomListMenu cl = new CustomListMenu(this, ParseJSONReadMenu.id_menu,ParseJSONReadMenu.name,ParseJSONReadMenu.price,ParseJSONReadMenu.description);
+        final CustomListEmployee cl = new CustomListEmployee(this, ParseJSONEmployee.id_employee,ParseJSONEmployee.name,ParseJSONEmployee.position);
         listView.setAdapter(cl);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(ReadMenuMakanan.this,"id menu = "+cl.getItem(i),Toast.LENGTH_SHORT).show();
-                final String id_menu =  cl.getItem(i);
+                Toast.makeText(ListEmployee.this,"id employee = "+cl.getItem(i),Toast.LENGTH_SHORT).show();
+                final String id_employee =  cl.getItem(i);
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -76,21 +76,19 @@ public class ReadMenuMakanan extends AppCompatActivity {
 
                             if (code==200){
 
-                                int id_menu = jo.getInt("id_menu");
+                                int id_employee = jo.getInt("id_employee");
                                 String name = jo.getString("name");
-                                int price = jo.getInt("price");
-                                String description = jo.getString("description");
+                                int position = jo.getInt("position");
 
-                                Intent detailMenuIntent = new Intent(ReadMenuMakanan.this, DetailMenuMakanan.class);
-                                detailMenuIntent.putExtra("id_menu", id_menu);
-                                detailMenuIntent.putExtra("name", name);
-                                detailMenuIntent.putExtra("price", price);
-                                detailMenuIntent.putExtra("description", description);
+                                Intent detailEmployeeIntent = new Intent(ListEmployee.this, DetailEmployee.class);
+                                detailEmployeeIntent.putExtra("id_employee", id_employee);
+                                detailEmployeeIntent.putExtra("name", name);
+                                detailEmployeeIntent.putExtra("position", position);
 
-                                ReadMenuMakanan.this.startActivity(detailMenuIntent);
+                                ListEmployee.this.startActivity(detailEmployeeIntent);
                             }
                             else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(ReadMenuMakanan.this);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(ListEmployee.this);
                                 builder.setMessage("nothing data")
                                         .setNegativeButton("Retry",null)
                                         .create()
@@ -102,12 +100,11 @@ public class ReadMenuMakanan extends AppCompatActivity {
                         }
                     }
                 };
-                DetailMenuMakananRequest detailMenuMakananRequest = new DetailMenuMakananRequest(id_menu,responseListener);
-                RequestQueue queue = Volley.newRequestQueue(ReadMenuMakanan.this);
-                queue.add(detailMenuMakananRequest);
+                DetailEmployeeRequest detailEmployeeRequest = new DetailEmployeeRequest(id_employee,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(ListEmployee.this);
+                queue.add(detailEmployeeRequest);
             }
         });
     }
-
 
 }

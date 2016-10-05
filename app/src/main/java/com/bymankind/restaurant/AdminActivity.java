@@ -1,17 +1,16 @@
 package com.bymankind.restaurant;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bymankind.restaurant.menuMakanan.CreateMenuMakanan;
+import com.bymankind.restaurant.Employee.ListEmployee;
 import com.bymankind.restaurant.menuMakanan.ReadMenuMakanan;
-import com.bymankind.restaurant.posisi.CreatePosisiActivity;
-import com.bymankind.restaurant.posisi.DeletePosisiActivity;
-import com.bymankind.restaurant.posisi.ReadPosisiActivity;
-import com.bymankind.restaurant.posisi.UpdatePosisiActivity;
+
 
 public class AdminActivity extends AppCompatActivity {
 
@@ -20,65 +19,28 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        final TextView createPosisiLink = (TextView) findViewById(R.id.tvCreatePosisi);
-        final TextView readPosisiLink = (TextView) findViewById(R.id.tvReadPosisi);
-        final TextView updatePosisiLink = (TextView) findViewById(R.id.tvUpdatePosisi);
-        final TextView deletePosisiLink = (TextView) findViewById(R.id.tvDeletePosisi);
+        final ImageView positionLink = (ImageView) findViewById(R.id.btn_position);
+        final ImageView menuLink = (ImageView) findViewById(R.id.btn_menu);
+        final ImageView employeeLink = (ImageView) findViewById(R.id.btn_employee);
+        final ImageView komLink = (ImageView) findViewById(R.id.btn_kindofmenu);
+        final ImageView customerLink = (ImageView) findViewById(R.id.btn_customer);
+        final ImageView tableLink = (ImageView) findViewById(R.id.btn_table);
+        final ImageView orderLink = (ImageView) findViewById(R.id.btn_order);
+        final ImageView inventoryLink = (ImageView) findViewById(R.id.btn_inventory);
 
-        final TextView createMenuMakananLink = (TextView) findViewById(R.id.tvCreateMenuMakanan);
-        final TextView readMenuMakananLink = (TextView) findViewById(R.id.tvReadMenuMakanan);
-
-        final TextView createMejaLink = (TextView) findViewById(R.id.tvCreateMeja);
-        final TextView readMejaLink = (TextView) findViewById(R.id.tvReadMeja);
-        final TextView deleteMejaLink = (TextView) findViewById(R.id.tvDeleteMeja);
-
-        createPosisiLink.setOnClickListener(new View.OnClickListener() {
+        employeeLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent createPosisiIntent = new Intent(AdminActivity.this , CreatePosisiActivity.class);
-                startActivity(createPosisiIntent);
+                Intent employeeIntent = new Intent(AdminActivity.this, ListEmployee.class);
+                startActivity(employeeIntent);
             }
         });
 
-        readPosisiLink.setOnClickListener(new View.OnClickListener() {
+        menuLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent readPosisiIntent = new Intent(AdminActivity.this , ReadPosisiActivity.class);
-                startActivity(readPosisiIntent);
-            }
-        });
-
-        updatePosisiLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent updatePosisiIntent = new Intent(AdminActivity.this , UpdatePosisiActivity.class);
-                startActivity(updatePosisiIntent);
-            }
-        });
-
-        deletePosisiLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent deletePosisiIntent = new Intent(AdminActivity.this , DeletePosisiActivity.class);
-                startActivity(deletePosisiIntent);
-            }
-        });
-
-/* ----------------------------------------------------------------------------------------------------------- */
-
-        createMenuMakananLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent createMenuIntent = new Intent(AdminActivity.this , CreateMenuMakanan.class);
-                startActivity(createMenuIntent);
-            }
-        });
-
-        readMenuMakananLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent readmenuIntent = new Intent(AdminActivity.this , ReadMenuMakanan.class);
-                startActivity(readmenuIntent);
+                Intent menuIntent = new Intent(AdminActivity.this, ReadMenuMakanan.class);
+                startActivity(menuIntent);
             }
         });
 

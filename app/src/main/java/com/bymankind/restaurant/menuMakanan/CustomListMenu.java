@@ -33,7 +33,7 @@ public class CustomListMenu extends ArrayAdapter<String>{
         LayoutInflater inflater = context.getLayoutInflater();
         View listViewItem = inflater.inflate(R.layout.read_menu_makanan_list, null, true);
         TextView textViewNama = (TextView) listViewItem.findViewById(R.id.tvName);
-        TextView textViewHarga = (TextView) listViewItem.findViewById(R.id.tvHargaMakanan);
+        TextView textViewHarga = (TextView) listViewItem.findViewById(R.id.tvPrice);
 
         textViewNama.setText(name[position]);
         textViewHarga.setText(price[position]);

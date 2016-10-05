@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_resto"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -27,7 +27,12 @@
         <activity android:name=".posisi.ReadPosisiActivity" />
         <activity android:name=".menuMakanan.CreateMenuMakanan" />
         <activity android:name=".menuMakanan.ReadMenuMakanan" />
-        <activity android:name=".menuMakanan.DetailMenuMakanan"></activity>
+        <activity android:name=".menuMakanan.DetailMenuMakanan" />
+        <activity
+            android:name=".Employee.ListEmployee"
+            android:label="@string/title_activity_list_employee"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Employee.DetailEmployee"></activity>
     </application>
 
 </manifest>

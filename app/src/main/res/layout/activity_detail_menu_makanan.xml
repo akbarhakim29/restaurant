@@ -22,7 +22,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etName"
+        android:id="@+id/etIDEmployee"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView7"
         android:layout_alignParentLeft="true" />
@@ -34,7 +34,7 @@
         android:text="Harga"
         android:id="@+id/textView8"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/etName"
+        android:layout_below="@+id/etIDEmployee"
         android:layout_alignParentLeft="true" />
 
     <EditText
@@ -59,13 +59,13 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="text"
         android:ems="10"
         android:id="@+id/etDescription"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView9"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_height="100dp" />
 
     <Button
         android:layout_width="wrap_content"

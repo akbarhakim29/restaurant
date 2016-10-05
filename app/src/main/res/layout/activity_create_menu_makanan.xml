@@ -23,7 +23,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etName"
+        android:id="@+id/etIDEmployee"
         android:hint="Food Name"
         android:layout_below="@+id/etID_Kind_of_menu"
         android:layout_alignParentLeft="true"
@@ -36,7 +36,7 @@
         android:ems="10"
         android:id="@+id/etPrice"
         android:hint="Price"
-        android:layout_below="@+id/etName"
+        android:layout_below="@+id/etIDEmployee"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

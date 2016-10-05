@@ -26,10 +26,10 @@ public class CreateMenuMakanan extends AppCompatActivity {
         setContentView(R.layout.activity_create_menu_makanan);
 
         final EditText etID_Kind_of_Menu = (EditText) findViewById(R.id.etID_Kind_of_menu);
-        final EditText etName = (EditText) findViewById(R.id.etName);
+        final EditText etName = (EditText) findViewById(R.id.etIDEmployee);
         final EditText etPrice = (EditText) findViewById(R.id.etPrice);
         final EditText etDescription = (EditText) findViewById(R.id.etDescription);
-        final EditText etPicture = (EditText) findViewById(R.id.etToken);
+        final EditText etPicture = (EditText) findViewById(R.id.etPicture);
         final Button buttonCreated = (Button) findViewById(R.id.buttonCreate);
 
         buttonCreated.setOnClickListener(new View.OnClickListener() {

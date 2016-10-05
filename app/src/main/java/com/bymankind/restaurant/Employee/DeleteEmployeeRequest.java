@@ -1,4 +1,4 @@
-package com.bymankind.restaurant.menuMakanan;
+package com.bymankind.restaurant.Employee;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -8,16 +8,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Server-Panduit on 8/3/2016.
+ * Created by Server-Panduit on 10/5/2016.
  */
-public class DeleteMenuMakananRequest extends StringRequest{
-    private final static String DELETE_REQUEST_URL = "http://192.168.100.16/restoserver/api/deleteMenu";
+
+public class DeleteEmployeeRequest extends StringRequest{
+    private final static String DELETE_REQUEST_URL = "http://192.168.100.14/restoserver/api/deleteEmployee";
     private Map<String, String> params;
 
-    public DeleteMenuMakananRequest(int id_menu, Response.Listener<String> listener){
+    public DeleteEmployeeRequest(int id_employee, Response.Listener<String> listener){
         super(Request.Method.POST , DELETE_REQUEST_URL, listener , null);
         params = new HashMap<>();
-        params.put("id_menu",id_menu+"");
+        params.put("id_employee",id_employee+"");
     }
 
     @Override
