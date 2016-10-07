@@ -33,7 +33,11 @@
         <activity android:name=".Employee.DetailEmployee" />
         <activity android:name=".Position.DetailPosition" />
         <activity android:name=".TypesOfMenu.ListTypesofmenu" />
-        <activity android:name=".TypesOfMenu.DetailTypesofmenu"></activity>
+        <activity android:name=".TypesOfMenu.DetailTypesofmenu" />
+        <activity android:name=".Table.ListTable" />
+        <activity android:name=".Table.DetailTable" />
+        <activity android:name=".Inventory.ListInventory" />
+        <activity android:name=".Inventory.DetailInventory"></activity>
     </application>
 
 </manifest>

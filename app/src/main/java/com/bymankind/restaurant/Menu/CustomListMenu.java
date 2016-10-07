@@ -29,16 +29,16 @@ public class CustomListMenu extends ArrayAdapter<String>{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int pos, View convertView, ViewGroup parent){
         LayoutInflater inflater = context.getLayoutInflater();
         View listViewItem = inflater.inflate(R.layout.list_menu_detail, null, true);
         TextView textViewID = (TextView) listViewItem.findViewById(R.id.tvIDMenu);
-        TextView textViewNama = (TextView) listViewItem.findViewById(R.id.tvName);
-        TextView textViewHarga = (TextView) listViewItem.findViewById(R.id.tvPrice);
+        TextView textViewName = (TextView) listViewItem.findViewById(R.id.tvName);
+        TextView textViewPrice = (TextView) listViewItem.findViewById(R.id.tvPrice);
 
-        textViewID.setText(id_menu[position]);
-        textViewNama.setText(name[position]);
-        textViewHarga.setText(price[position]);
+        textViewID.setText(id_menu[pos]);
+        textViewName.setText(name[pos]);
+        textViewPrice.setText(price[pos]);
 
         return listViewItem;
     }

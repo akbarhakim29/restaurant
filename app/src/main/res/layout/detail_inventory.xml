@@ -1,88 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detail_inventory"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.bymankind.restaurant.Menu.DetailMenu">
+    tools:context="com.bymankind.restaurant.Inventory.DetailInventory">
 
     <TextView
-        android:text="ID Menu"
+        android:text="ID Inventory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/textView7" />
+        android:id="@+id/textView14" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:text="Name"
         android:ems="10"
-        android:layout_below="@+id/textView7"
+        android:layout_below="@+id/textView14"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/etIDMenu" />
+        android:id="@+id/etIDInventory" />
 
     <TextView
         android:text="Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etIDMenu"
+        android:layout_below="@+id/etIDInventory"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/textView8" />
+        android:id="@+id/textView21" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:text="Name"
         android:ems="10"
-        android:layout_below="@+id/textView8"
-        android:layout_alignRight="@+id/etIDMenu"
-        android:layout_alignEnd="@+id/etIDMenu"
+        android:layout_below="@+id/textView21"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:id="@+id/etName" />
 
     <TextView
-        android:text="Price"
+        android:text="Amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/textView9" />
+        android:id="@+id/textView22" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:layout_below="@+id/textView9"
+        android:layout_below="@+id/textView22"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/etPrice" />
+        android:id="@+id/etAmount" />
 
     <TextView
         android:text="Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etPrice"
+        android:layout_below="@+id/etAmount"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/textView10" />
+        android:id="@+id/textView24" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:layout_below="@+id/textView10"
+        android:layout_below="@+id/textView24"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/etDescription" />
@@ -91,18 +92,21 @@
         android:text="Delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView10"
-        android:layout_toRightOf="@+id/textView7"
-        android:layout_toEndOf="@+id/textView7"
-        android:layout_marginTop="86dp"
+        android:layout_below="@+id/etDescription"
+        android:layout_toRightOf="@+id/textView22"
+        android:layout_toEndOf="@+id/textView22"
+        android:layout_marginTop="69dp"
         android:id="@+id/btnDelete" />
 
     <Button
         android:text="Update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btnDelete"
-        android:layout_toRightOf="@+id/etPrice"
-        android:layout_toEndOf="@+id/etPrice"
+        android:layout_alignBottom="@+id/btnDelete"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="33dp"
+        android:layout_marginEnd="33dp"
         android:id="@+id/btnUpdate" />
+
 </RelativeLayout>

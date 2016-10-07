@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import static java.lang.Integer.parseInt;
 
 public class ListMenu extends AppCompatActivity {
-    public static final String JSON_URL = "http://192.168.100.14/restoserver/api/getAllMenu";
+    public static final String JSON_URL = "http://192.168.100.2/restoserver/api/getAllMenu";
     private ListView listView;
 
     @Override

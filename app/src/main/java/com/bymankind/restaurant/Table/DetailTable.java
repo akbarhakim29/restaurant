@@ -1,4 +1,4 @@
-package com.bymankind.restaurant.Menu;
+package com.bymankind.restaurant.Table;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,45 +12,45 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.bymankind.restaurant.AdminActivity;
+import com.bymankind.restaurant.Employee.DeleteEmployeeRequest;
+import com.bymankind.restaurant.Employee.DetailEmployee;
+import com.bymankind.restaurant.Employee.UpdateEmployeeRequest;
 import com.bymankind.restaurant.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DetailMenu extends AppCompatActivity {
+public class DetailTable extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detail_menu);
+        setContentView(R.layout.detail_table);
 
-        final EditText etIDMenu = (EditText) findViewById(R.id.etIDMenu);
-        final EditText etName = (EditText) findViewById(R.id.etName);
-        final EditText etPrice =  (EditText) findViewById(R.id.etPrice);
+        final EditText etID = (EditText) findViewById(R.id.etIDTable);
+        final EditText etIDStatus = (EditText) findViewById(R.id.etIDStatus);
         final EditText etDescription = (EditText) findViewById(R.id.etDescription);
 
-        final Button btnUpdate = (Button) findViewById(R.id.btnUpdate);
         final Button btnDelete = (Button) findViewById(R.id.btnDelete);
+        final Button btnUpdate = (Button) findViewById(R.id.btnUpdate);
 
         Intent intent = getIntent();
-        int id_menu = intent.getIntExtra("id_menu",-1);
-        String nama =  intent.getStringExtra("name");
-        int harga = intent.getIntExtra("price",-1);
-        String deskripsi = intent.getStringExtra("description");
+        int id_table = intent.getIntExtra("id_table",-1);
+        int id_status =  intent.getIntExtra("id_status",-1);
+        String description = intent.getStringExtra("description");
 
-        etIDMenu.setText(id_menu + "");
-        etName.setText(nama);
-        etPrice.setText(harga + "");
-        etDescription.setText(deskripsi);
+
+        etID.setText(id_table + "");
+        etIDStatus.setText(id_status + "");
+        etDescription.setText(description);
+
 
         // action update
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final int id_menu = Integer.parseInt(etIDMenu.getText().toString());
-                final String name = etName.getText().toString();
-                final int price = Integer.parseInt(etPrice.getText().toString());
-                final String description = etDescription.getText().toString();
+                final int id_table = Integer.parseInt(etID.getText().toString());
+                final int id_status = Integer.parseInt(etIDStatus.getText().toString());
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -60,21 +60,21 @@ public class DetailMenu extends AppCompatActivity {
                             int code = jsonObject.getInt("code");
 
                             if (code==200){
-                                Toast.makeText(DetailMenu.this,"Menu updated" ,Toast.LENGTH_LONG).show();
-                                Intent successIntent = new Intent(DetailMenu.this, AdminActivity.class);
-                                DetailMenu.this.startActivity(successIntent);
+                                Toast.makeText(DetailTable.this,"Table updated" ,Toast.LENGTH_LONG).show();
+                                Intent successIntent = new Intent(DetailTable.this, AdminActivity.class);
+                                DetailTable.this.startActivity(successIntent);
                             }
                             else{
-                                Toast.makeText(DetailMenu.this,"Menu not updated" ,Toast.LENGTH_LONG).show();
+                                Toast.makeText(DetailTable.this,"Table not updated" ,Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
                 };
-                UpdateMenuRequest updateMenuRequest = new UpdateMenuRequest(id_menu,name,price,description,responseListener);
-                RequestQueue queue = Volley.newRequestQueue(DetailMenu.this);
-                queue.add(updateMenuRequest);
+                UpdateTableRequest updateTableRequest= new UpdateTableRequest(id_table,id_status,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(DetailTable.this);
+                queue.add(updateTableRequest);
             }
         });
 
@@ -82,7 +82,7 @@ public class DetailMenu extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final int id_menu = Integer.parseInt(etIDMenu.getText().toString());
+                final int id_table = Integer.parseInt(etID.getText().toString());
                 Response.Listener<String> deleteResponse = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -91,23 +91,24 @@ public class DetailMenu extends AppCompatActivity {
                             int code = jsonObject.getInt("code");
 
                             if (code==200){
-                                Toast.makeText(DetailMenu.this,"Menu deleted" ,Toast.LENGTH_LONG).show();
-                                Intent successIntent = new Intent(DetailMenu.this, AdminActivity.class);
-                                DetailMenu.this.startActivity(successIntent);
+                                Toast.makeText(DetailTable.this,"Table deleted" ,Toast.LENGTH_LONG).show();
+                                Intent successIntent = new Intent(DetailTable.this, AdminActivity.class);
+                                DetailTable.this.startActivity(successIntent);
                             }
                             else{
-                                Toast.makeText(DetailMenu.this,"Menu not deleted" ,Toast.LENGTH_LONG).show();
+                                Toast.makeText(DetailTable.this,"Table not deleted" ,Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
                 };
-                DeleteMenuRequest deleteMenuRequest = new DeleteMenuRequest(id_menu,deleteResponse);
-                RequestQueue queue = Volley.newRequestQueue(DetailMenu.this);
-                queue.add(deleteMenuRequest);
+                DeleteTableRequest deleteTableRequest= new DeleteTableRequest(id_table,deleteResponse);
+                RequestQueue queue = Volley.newRequestQueue(DetailTable.this);
+                queue.add(deleteTableRequest);
             }
         });
+
 
     }
 }

@@ -1,4 +1,4 @@
-package com.bymankind.restaurant.Position;
+package com.bymankind.restaurant.Inventory;
 
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -20,19 +20,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ListPosition extends AppCompatActivity{
-    public static final String JSON_URL = "http://192.168.100.2/restoserver/api/getAllPosition";
+public class ListInventory extends AppCompatActivity {
+    public static final String JSON_URL = "http://192.168.100.2/restoserver/api/getAllInventory";
     private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_position);
+        setContentView(R.layout.list_inventory);
 
-        listView =  (ListView) findViewById(R.id.lvPosition);
+        listView =  (ListView) findViewById(R.id.lvInventory);
         sendRequest();
-
     }
+
     private void sendRequest(){
         StringRequest stringRequest = new StringRequest(JSON_URL,
                 new Response.Listener<String>() {
@@ -44,7 +44,7 @@ public class ListPosition extends AppCompatActivity{
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ListPosition.this,error.getMessage(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(ListInventory.this,error.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -52,15 +52,15 @@ public class ListPosition extends AppCompatActivity{
     }
 
     private void showJSON(String json){
-        ParseJSONPosition pj = new ParseJSONPosition(json);
+        ParseJSONInventory pj = new ParseJSONInventory(json);
         pj.parseJSON();
-        final CustomListPosition cl = new CustomListPosition(this, ParseJSONPosition.id_position, ParseJSONPosition.name, ParseJSONPosition.salary);
+        final CustomListInventory cl = new CustomListInventory(this, ParseJSONInventory.id_inventory, ParseJSONInventory.name, ParseJSONInventory.amount, ParseJSONInventory.description);
         listView.setAdapter(cl);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(ListPosition.this,"id position = "+cl.getItem(i),Toast.LENGTH_SHORT).show();
-                final String id_position =  cl.getItem(i);
+                Toast.makeText(ListInventory.this,"id Inventory = "+cl.getItem(i),Toast.LENGTH_SHORT).show();
+                final String id_inventory =  cl.getItem(i);
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -72,19 +72,21 @@ public class ListPosition extends AppCompatActivity{
 
                             if (code==200){
 
-                                int id_position = jo.getInt("id_position");
+                                int id_inventory = jo.getInt("id_inventory");
                                 String name = jo.getString("name");
-                                int salary = jo.getInt("salary");
+                                int amount = jo.getInt("amount");
+                                String description = jo.getString("description");
 
-                                Intent detailPositionIntent = new Intent(ListPosition.this, DetailPosition.class);
-                                detailPositionIntent.putExtra("id_position", id_position);
-                                detailPositionIntent.putExtra("name", name);
-                                detailPositionIntent.putExtra("salary", salary);
+                                Intent detailInventoryIntent = new Intent(ListInventory.this, DetailInventory.class);
+                                detailInventoryIntent.putExtra("id_inventory", id_inventory);
+                                detailInventoryIntent.putExtra("name", name);
+                                detailInventoryIntent.putExtra("amount", amount);
+                                detailInventoryIntent.putExtra("description", description);
 
-                                ListPosition.this.startActivity(detailPositionIntent);
+                                ListInventory.this.startActivity(detailInventoryIntent);
                             }
                             else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(ListPosition.this);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(ListInventory.this);
                                 builder.setMessage("nothing data")
                                         .setNegativeButton("Retry",null)
                                         .create()
@@ -96,11 +98,10 @@ public class ListPosition extends AppCompatActivity{
                         }
                     }
                 };
-                DetailPositionRequest detailPositionRequest = new DetailPositionRequest(id_position,responseListener);
-                RequestQueue queue = Volley.newRequestQueue(ListPosition.this);
-                queue.add(detailPositionRequest);
+                DetailInventoryRequest detailInventoryRequest = new DetailInventoryRequest(id_inventory,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(ListInventory.this);
+                queue.add(detailInventoryRequest);
             }
         });
-
     }
 }

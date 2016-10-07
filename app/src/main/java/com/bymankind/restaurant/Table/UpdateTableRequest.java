@@ -1,4 +1,4 @@
-package com.bymankind.restaurant.TypesOfMenu;
+package com.bymankind.restaurant.Table;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -11,15 +11,15 @@ import java.util.Map;
  * Created by Server-Panduit on 10/7/2016.
  */
 
-public class UpdateTypesofmenuRequest extends StringRequest {
-    private final static String UPDATE_REQUEST_URL = "http://192.168.100.2/restoserver/api/updateToM";
+public class UpdateTableRequest extends StringRequest {
+    private final static String UPDATE_REQUEST_URL = "http://192.168.100.2/restoserver/api/updateTable";
     private Map<String, String> params;
 
-    public UpdateTypesofmenuRequest(int id_types_of_menu, String name, Response.Listener<String> listener){
+    public UpdateTableRequest(int id_table, int id_status, Response.Listener<String> listener){
         super(Request.Method.POST , UPDATE_REQUEST_URL, listener , null);
         params = new HashMap<>();
-        params.put("id_types_of_menu",id_types_of_menu+"");
-        params.put("name",name);
+        params.put("id_table",id_table+"");
+        params.put("id_status",id_status+"");
     }
 
     @Override

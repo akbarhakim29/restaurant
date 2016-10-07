@@ -1,4 +1,4 @@
-package com.bymankind.restaurant.Menu;
+package com.bymankind.restaurant.Inventory;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -8,18 +8,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Server-Panduit on 8/3/2016.
+ * Created by Server-Panduit on 10/7/2016.
  */
-public class UpdateMenuRequest extends StringRequest{
-    private final static String UPDATE_REQUEST_URL = "http://192.168.100.2/restoserver/api/updateMenu";
+
+public class UpdateInventoryRequest extends StringRequest{
+    private final static String UPDATE_REQUEST_URL = "http://192.168.100.2/restoserver/api/updateInventory";
     private Map<String, String> params;
 
-    public UpdateMenuRequest(int id_menu, String name, int price, String description, Response.Listener<String> listener){
+    public UpdateInventoryRequest(int id_inventory, String name, int amount, String description, Response.Listener<String> listener){
         super(Request.Method.POST , UPDATE_REQUEST_URL, listener , null);
         params = new HashMap<>();
-        params.put("id_menu",id_menu+"");
+        params.put("id_inventory",id_inventory+"");
         params.put("name",name);
-        params.put("price",price+"");
+        params.put("amount",amount+"");
         params.put("description",description);
     }
 

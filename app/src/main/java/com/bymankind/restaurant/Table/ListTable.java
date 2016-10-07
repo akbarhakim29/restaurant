@@ -1,4 +1,4 @@
-package com.bymankind.restaurant.Position;
+package com.bymankind.restaurant.Table;
 
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -14,25 +14,30 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bymankind.restaurant.Employee.CustomListEmployee;
+import com.bymankind.restaurant.Employee.DetailEmployee;
+import com.bymankind.restaurant.Employee.DetailEmployeeRequest;
+import com.bymankind.restaurant.Employee.ListEmployee;
+import com.bymankind.restaurant.Employee.ParseJSONEmployee;
 import com.bymankind.restaurant.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ListPosition extends AppCompatActivity{
-    public static final String JSON_URL = "http://192.168.100.2/restoserver/api/getAllPosition";
+public class ListTable extends AppCompatActivity {
+    public static final String JSON_URL = "http://192.168.100.2/restoserver/api/getAllTable";
     private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_position);
+        setContentView(R.layout.list_table);
 
-        listView =  (ListView) findViewById(R.id.lvPosition);
+        listView =  (ListView) findViewById(R.id.lvTable);
         sendRequest();
-
     }
+
     private void sendRequest(){
         StringRequest stringRequest = new StringRequest(JSON_URL,
                 new Response.Listener<String>() {
@@ -44,7 +49,7 @@ public class ListPosition extends AppCompatActivity{
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ListPosition.this,error.getMessage(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(ListTable.this,error.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -52,15 +57,15 @@ public class ListPosition extends AppCompatActivity{
     }
 
     private void showJSON(String json){
-        ParseJSONPosition pj = new ParseJSONPosition(json);
+        ParseJSONTable pj = new ParseJSONTable(json);
         pj.parseJSON();
-        final CustomListPosition cl = new CustomListPosition(this, ParseJSONPosition.id_position, ParseJSONPosition.name, ParseJSONPosition.salary);
+        final CustomListTable cl = new CustomListTable(this, ParseJSONTable.id_table,ParseJSONTable.description);
         listView.setAdapter(cl);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(ListPosition.this,"id position = "+cl.getItem(i),Toast.LENGTH_SHORT).show();
-                final String id_position =  cl.getItem(i);
+                Toast.makeText(ListTable.this,"id table = "+cl.getItem(i),Toast.LENGTH_SHORT).show();
+                final String id_table =  cl.getItem(i);
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -72,19 +77,19 @@ public class ListPosition extends AppCompatActivity{
 
                             if (code==200){
 
-                                int id_position = jo.getInt("id_position");
-                                String name = jo.getString("name");
-                                int salary = jo.getInt("salary");
+                                int id_table = jo.getInt("id_table");
+                                int id_status = jo.getInt("id_status");
+                                String description = jo.getString("description");
 
-                                Intent detailPositionIntent = new Intent(ListPosition.this, DetailPosition.class);
-                                detailPositionIntent.putExtra("id_position", id_position);
-                                detailPositionIntent.putExtra("name", name);
-                                detailPositionIntent.putExtra("salary", salary);
+                                Intent detailTableIntent = new Intent(ListTable.this, DetailTable.class);
+                                detailTableIntent.putExtra("id_table", id_table);
+                                detailTableIntent.putExtra("id_status", id_status);
+                                detailTableIntent.putExtra("description", description);
 
-                                ListPosition.this.startActivity(detailPositionIntent);
+                                ListTable.this.startActivity(detailTableIntent);
                             }
                             else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(ListPosition.this);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(ListTable.this);
                                 builder.setMessage("nothing data")
                                         .setNegativeButton("Retry",null)
                                         .create()
@@ -96,11 +101,10 @@ public class ListPosition extends AppCompatActivity{
                         }
                     }
                 };
-                DetailPositionRequest detailPositionRequest = new DetailPositionRequest(id_position,responseListener);
-                RequestQueue queue = Volley.newRequestQueue(ListPosition.this);
-                queue.add(detailPositionRequest);
+                DetailTableRequest detailEmployeeRequest = new DetailTableRequest(id_table,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(ListTable.this);
+                queue.add(detailEmployeeRequest);
             }
         });
-
     }
 }

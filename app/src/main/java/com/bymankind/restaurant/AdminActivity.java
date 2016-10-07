@@ -7,8 +7,10 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bymankind.restaurant.Employee.ListEmployee;
+import com.bymankind.restaurant.Inventory.ListInventory;
 import com.bymankind.restaurant.Menu.ListMenu;
 import com.bymankind.restaurant.Position.ListPosition;
+import com.bymankind.restaurant.Table.ListTable;
 import com.bymankind.restaurant.TypesOfMenu.ListTypesofmenu;
 
 
@@ -60,6 +62,21 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
+        tableLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent tableIntent = new Intent(AdminActivity.this, ListTable.class);
+                startActivity(tableIntent);
+            }
+        });
+
+        inventoryLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent inventoryIntent = new Intent(AdminActivity.this, ListInventory.class);
+                startActivity(inventoryIntent);
+            }
+        });
 
 
     }
