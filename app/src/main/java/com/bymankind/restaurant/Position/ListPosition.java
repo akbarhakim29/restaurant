@@ -1,12 +1,9 @@
-package com.bymankind.restaurant.Employee;
+package com.bymankind.restaurant.Position;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -23,20 +20,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
-public class ListEmployee extends AppCompatActivity {
-    public static final String JSON_URL = "http://192.168.100.14/restoserver/api/getAllEmployee";
+public class ListPosition extends AppCompatActivity{
+    public static final String JSON_URL = "http://192.168.100.14/restoserver/api/getAllPosition";
     private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_employee);
+        setContentView(R.layout.list_position);
 
-        listView =  (ListView) findViewById(R.id.lvEmployee);
+        listView =  (ListView) findViewById(R.id.lvPosition);
         sendRequest();
-    }
 
+    }
     private void sendRequest(){
         StringRequest stringRequest = new StringRequest(JSON_URL,
                 new Response.Listener<String>() {
@@ -48,7 +44,7 @@ public class ListEmployee extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ListEmployee.this,error.getMessage(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(ListPosition.this,error.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -56,15 +52,15 @@ public class ListEmployee extends AppCompatActivity {
     }
 
     private void showJSON(String json){
-        ParseJSONEmployee pj = new ParseJSONEmployee(json);
+        ParseJSONPosition pj = new ParseJSONPosition(json);
         pj.parseJSON();
-        final CustomListEmployee cl = new CustomListEmployee(this, ParseJSONEmployee.id_employee,ParseJSONEmployee.name,ParseJSONEmployee.position);
+        final CustomListPosition cl = new CustomListPosition(this, ParseJSONPosition.id_position, ParseJSONPosition.name, ParseJSONPosition.salary);
         listView.setAdapter(cl);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(ListEmployee.this,"id employee = "+cl.getItem(i),Toast.LENGTH_SHORT).show();
-                final String id_employee =  cl.getItem(i);
+                Toast.makeText(ListPosition.this,"id position = "+cl.getItem(i),Toast.LENGTH_SHORT).show();
+                final String id_position =  cl.getItem(i);
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -76,27 +72,19 @@ public class ListEmployee extends AppCompatActivity {
 
                             if (code==200){
 
-                                int id_employee = jo.getInt("id_employee");
-                                String name = jo.getString("name");
-                                String birthPlace = jo.getString("birthPlace");
-                                String birthDay = jo.getString("birthDay");
                                 int id_position = jo.getInt("id_position");
-                                String contractStart = jo.getString("contractStart");
-                                String contractEnd = jo.getString("contractEnd");
+                                String name = jo.getString("name");
+                                int salary = jo.getInt("salary");
 
-                                Intent detailEmployeeIntent = new Intent(ListEmployee.this, DetailEmployee.class);
-                                detailEmployeeIntent.putExtra("id_employee", id_employee);
-                                detailEmployeeIntent.putExtra("name", name);
-                                detailEmployeeIntent.putExtra("birthPlace", birthPlace);
-                                detailEmployeeIntent.putExtra("birthDay", birthDay);
-                                detailEmployeeIntent.putExtra("id_position", id_position);
-                                detailEmployeeIntent.putExtra("contractStart", contractStart);
-                                detailEmployeeIntent.putExtra("contractEnd", contractEnd);
+                                Intent detailPositionIntent = new Intent(ListPosition.this, DetailPosition.class);
+                                detailPositionIntent.putExtra("id_position", id_position);
+                                detailPositionIntent.putExtra("name", name);
+                                detailPositionIntent.putExtra("salary", salary);
 
-                                ListEmployee.this.startActivity(detailEmployeeIntent);
+                                ListPosition.this.startActivity(detailPositionIntent);
                             }
                             else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(ListEmployee.this);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(ListPosition.this);
                                 builder.setMessage("nothing data")
                                         .setNegativeButton("Retry",null)
                                         .create()
@@ -108,11 +96,11 @@ public class ListEmployee extends AppCompatActivity {
                         }
                     }
                 };
-                DetailEmployeeRequest detailEmployeeRequest = new DetailEmployeeRequest(id_employee,responseListener);
-                RequestQueue queue = Volley.newRequestQueue(ListEmployee.this);
-                queue.add(detailEmployeeRequest);
+                DetailPositionRequest detailPositionRequest = new DetailPositionRequest(id_position,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(ListPosition.this);
+                queue.add(detailPositionRequest);
             }
         });
-    }
 
+    }
 }

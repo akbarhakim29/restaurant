@@ -32,9 +32,9 @@ public class CustomListEmployee extends ArrayAdapter<String>{
     public View getView(int pos, View convertView, ViewGroup parent){
         LayoutInflater inflater = context.getLayoutInflater();
         View listViewItem = inflater.inflate(R.layout.list_employee_detail, null, true);
-        TextView textViewID = (TextView) listViewItem.findViewById(R.id.tv_IDEmployee);
-        TextView textViewName = (TextView) listViewItem.findViewById(R.id.tv_name);
-        TextView textViewPosition = (TextView) listViewItem.findViewById(R.id.tv_position);
+        TextView textViewID = (TextView) listViewItem.findViewById(R.id.tvIDEmployee);
+        TextView textViewName = (TextView) listViewItem.findViewById(R.id.tvName);
+        TextView textViewPosition = (TextView) listViewItem.findViewById(R.id.tvPosition);
 
         textViewID.setText(id_employee[pos]);
         textViewName.setText(name[pos]);

@@ -21,18 +21,19 @@
         <activity android:name=".KokiActivity" />
         <activity android:name=".PramusajiActivity" />
         <activity android:name=".KasirActivity" />
-        <activity android:name=".posisi.CreatePosisiActivity" />
-        <activity android:name=".posisi.UpdatePosisiActivity" />
-        <activity android:name=".posisi.DeletePosisiActivity" />
-        <activity android:name=".posisi.ReadPosisiActivity" />
-        <activity android:name=".menuMakanan.CreateMenuMakanan" />
-        <activity android:name=".menuMakanan.ReadMenuMakanan" />
-        <activity android:name=".menuMakanan.DetailMenuMakanan" />
+        <activity android:name=".Position.CreatePosition" />
+        <activity android:name=".Position.ListPosition" />
+        <activity android:name=".Menu.CreateMenu" />
+        <activity android:name=".Menu.ListMenu" />
+        <activity android:name=".Menu.DetailMenu" />
         <activity
             android:name=".Employee.ListEmployee"
             android:label="@string/title_activity_list_employee"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Employee.DetailEmployee"></activity>
+        <activity android:name=".Employee.DetailEmployee" />
+        <activity android:name=".Position.DetailPosition" />
+        <activity android:name=".TypesOfMenu.ListTypesofmenu" />
+        <activity android:name=".TypesOfMenu.DetailTypesofmenu"></activity>
     </application>
 
 </manifest>

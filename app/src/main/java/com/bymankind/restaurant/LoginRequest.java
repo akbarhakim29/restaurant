@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by Server-Panduit on 7/20/2016.
  */
 public class LoginRequest extends StringRequest {
-    private final static String LOGIN_REQUEST_URL = "http://192.168.100.14/restoserver/api/getEmployee";
+    private final static String LOGIN_REQUEST_URL = "http://192.168.100.14/restoserver/api/login";
     private Map<String, String> params;
 
     public LoginRequest(String username, String password, Response.Listener<String> listener){

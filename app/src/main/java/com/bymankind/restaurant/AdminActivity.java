@@ -1,15 +1,15 @@
 package com.bymankind.restaurant;
 
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bymankind.restaurant.Employee.ListEmployee;
-import com.bymankind.restaurant.menuMakanan.ReadMenuMakanan;
+import com.bymankind.restaurant.Menu.ListMenu;
+import com.bymankind.restaurant.Position.ListPosition;
+import com.bymankind.restaurant.TypesOfMenu.ListTypesofmenu;
 
 
 public class AdminActivity extends AppCompatActivity {
@@ -22,11 +22,19 @@ public class AdminActivity extends AppCompatActivity {
         final ImageView positionLink = (ImageView) findViewById(R.id.btn_position);
         final ImageView menuLink = (ImageView) findViewById(R.id.btn_menu);
         final ImageView employeeLink = (ImageView) findViewById(R.id.btn_employee);
-        final ImageView komLink = (ImageView) findViewById(R.id.btn_kindofmenu);
+        final ImageView tomLink = (ImageView) findViewById(R.id.btn_typesofmenu);
         final ImageView customerLink = (ImageView) findViewById(R.id.btn_customer);
         final ImageView tableLink = (ImageView) findViewById(R.id.btn_table);
         final ImageView orderLink = (ImageView) findViewById(R.id.btn_order);
         final ImageView inventoryLink = (ImageView) findViewById(R.id.btn_inventory);
+
+        positionLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent positionIntent = new Intent(AdminActivity.this, ListPosition.class);
+                startActivity(positionIntent);
+            }
+        });
 
         employeeLink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,10 +47,19 @@ public class AdminActivity extends AppCompatActivity {
         menuLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent menuIntent = new Intent(AdminActivity.this, ReadMenuMakanan.class);
+                Intent menuIntent = new Intent(AdminActivity.this, ListMenu.class);
                 startActivity(menuIntent);
             }
         });
+
+        tomLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent tomIntent = new Intent(AdminActivity.this, ListTypesofmenu.class);
+                startActivity(tomIntent);
+            }
+        });
+
 
 
     }

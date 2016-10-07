@@ -1,12 +1,9 @@
-package com.bymankind.restaurant.Employee;
+package com.bymankind.restaurant.TypesOfMenu;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -17,23 +14,26 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bymankind.restaurant.Employee.CustomListEmployee;
+import com.bymankind.restaurant.Employee.DetailEmployee;
+import com.bymankind.restaurant.Employee.DetailEmployeeRequest;
+import com.bymankind.restaurant.Employee.ListEmployee;
+import com.bymankind.restaurant.Employee.ParseJSONEmployee;
 import com.bymankind.restaurant.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
-public class ListEmployee extends AppCompatActivity {
-    public static final String JSON_URL = "http://192.168.100.14/restoserver/api/getAllEmployee";
+public class ListTypesofmenu extends AppCompatActivity {
+    public static final String JSON_URL = "http://192.168.100.14/restoserver/api/getAllToM";
     private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_employee);
-
-        listView =  (ListView) findViewById(R.id.lvEmployee);
+        setContentView(R.layout.list_typesofmenu);
+        listView =  (ListView) findViewById(R.id.lvToM);
         sendRequest();
     }
 
@@ -48,7 +48,7 @@ public class ListEmployee extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ListEmployee.this,error.getMessage(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(ListTypesofmenu.this,error.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -56,15 +56,15 @@ public class ListEmployee extends AppCompatActivity {
     }
 
     private void showJSON(String json){
-        ParseJSONEmployee pj = new ParseJSONEmployee(json);
+        ParseJSONTypesofmenu pj = new ParseJSONTypesofmenu(json);
         pj.parseJSON();
-        final CustomListEmployee cl = new CustomListEmployee(this, ParseJSONEmployee.id_employee,ParseJSONEmployee.name,ParseJSONEmployee.position);
+        final CustomListTypesofmenu cl = new CustomListTypesofmenu(this, ParseJSONTypesofmenu.id_types_of_menu,ParseJSONTypesofmenu.name);
         listView.setAdapter(cl);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(ListEmployee.this,"id employee = "+cl.getItem(i),Toast.LENGTH_SHORT).show();
-                final String id_employee =  cl.getItem(i);
+                Toast.makeText(ListTypesofmenu.this,"id Types of Menu = "+cl.getItem(i),Toast.LENGTH_SHORT).show();
+                final String id_types_of_menu =  cl.getItem(i);
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -76,27 +76,17 @@ public class ListEmployee extends AppCompatActivity {
 
                             if (code==200){
 
-                                int id_employee = jo.getInt("id_employee");
+                                int id_types_of_menu = jo.getInt("id_types_of_menu");
                                 String name = jo.getString("name");
-                                String birthPlace = jo.getString("birthPlace");
-                                String birthDay = jo.getString("birthDay");
-                                int id_position = jo.getInt("id_position");
-                                String contractStart = jo.getString("contractStart");
-                                String contractEnd = jo.getString("contractEnd");
 
-                                Intent detailEmployeeIntent = new Intent(ListEmployee.this, DetailEmployee.class);
-                                detailEmployeeIntent.putExtra("id_employee", id_employee);
-                                detailEmployeeIntent.putExtra("name", name);
-                                detailEmployeeIntent.putExtra("birthPlace", birthPlace);
-                                detailEmployeeIntent.putExtra("birthDay", birthDay);
-                                detailEmployeeIntent.putExtra("id_position", id_position);
-                                detailEmployeeIntent.putExtra("contractStart", contractStart);
-                                detailEmployeeIntent.putExtra("contractEnd", contractEnd);
+                                Intent detailTypesofmenuIntent = new Intent(ListTypesofmenu.this, DetailTypesofmenu.class);
+                                detailTypesofmenuIntent.putExtra("id_types_of_menu", id_types_of_menu);
+                                detailTypesofmenuIntent.putExtra("name", name);
 
-                                ListEmployee.this.startActivity(detailEmployeeIntent);
+                                ListTypesofmenu.this.startActivity(detailTypesofmenuIntent);
                             }
                             else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(ListEmployee.this);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(ListTypesofmenu.this);
                                 builder.setMessage("nothing data")
                                         .setNegativeButton("Retry",null)
                                         .create()
@@ -108,11 +98,10 @@ public class ListEmployee extends AppCompatActivity {
                         }
                     }
                 };
-                DetailEmployeeRequest detailEmployeeRequest = new DetailEmployeeRequest(id_employee,responseListener);
-                RequestQueue queue = Volley.newRequestQueue(ListEmployee.this);
-                queue.add(detailEmployeeRequest);
+                DetailTypesofmenuRequest detailTypesofmenuRequest = new DetailTypesofmenuRequest(id_types_of_menu,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(ListTypesofmenu.this);
+                queue.add(detailTypesofmenuRequest);
             }
         });
     }
-
 }

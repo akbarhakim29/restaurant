@@ -15,12 +15,16 @@ public class UpdateEmployeeRequest extends StringRequest{
     private final static String UPDATE_REQUEST_URL = "http://192.168.100.14/restoserver/api/updateEmployee";
     private Map<String, String> params;
 
-    public UpdateEmployeeRequest(int id_employee, String name,String birthPlace, Response.Listener<String> listener){
+    public UpdateEmployeeRequest(int id_employee, String name,String birthPlace,String birthDay,int id_position,String contractStart,String contractEnd, Response.Listener<String> listener){
         super(Request.Method.POST , UPDATE_REQUEST_URL, listener , null);
         params = new HashMap<>();
         params.put("id_employee",id_employee+"");
         params.put("name",name);
         params.put("birthPlace",birthPlace);
+        params.put("birthDay",birthDay);
+        params.put("id_position",id_position+"");
+        params.put("contractStart",contractStart);
+        params.put("contractEnd",contractEnd);
     }
 
     @Override

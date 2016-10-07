@@ -13,14 +13,9 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.bymankind.restaurant.AdminActivity;
 import com.bymankind.restaurant.R;
-import com.bymankind.restaurant.menuMakanan.DeleteMenuMakananRequest;
-import com.bymankind.restaurant.menuMakanan.DetailMenuMakanan;
-import com.bymankind.restaurant.menuMakanan.UpdateMenuMakananRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Date;
 
 public class DetailEmployee extends AppCompatActivity {
 
@@ -33,7 +28,7 @@ public class DetailEmployee extends AppCompatActivity {
         final EditText etName = (EditText) findViewById(R.id.etName);
         final EditText etBirthPlace = (EditText) findViewById(R.id.etBirthPlace);
         final EditText etBirthDay = (EditText) findViewById(R.id.etBirthDay);
-        final EditText etPosition = (EditText) findViewById(R.id.etPosition);
+        final EditText etIDPosition = (EditText) findViewById(R.id.etPosition);
         final EditText etContractStart = (EditText) findViewById(R.id.etContractStart);
         final EditText etContractEnd = (EditText) findViewById(R.id.etContractEnd);
 
@@ -44,6 +39,7 @@ public class DetailEmployee extends AppCompatActivity {
         int id_employee = intent.getIntExtra("id_employee",-1);
         String name =  intent.getStringExtra("name");
         String birthPlace = intent.getStringExtra("birthPlace");
+        int  id_position = intent.getIntExtra("id_position",-1);
         String birthDay = intent.getStringExtra("birthDay");
         String contractStart = intent.getStringExtra("contractStart");
         String contractEnd = intent.getStringExtra("contractEnd");
@@ -53,20 +49,22 @@ public class DetailEmployee extends AppCompatActivity {
         etName.setText(name);
         etBirthPlace.setText(birthPlace);
         etBirthDay.setText(birthDay);
+        etIDPosition.setText(id_position + "");
         etContractStart.setText(contractStart);
         etContractEnd.setText(contractEnd);
 
 
         // action update
-       /* btnUpdate.setOnClickListener(new View.OnClickListener() {
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final int id_employee = Integer.parseInt(etID.getText().toString());
                 final String name = etName.getText().toString();
                 final String birthPlace = etBirthPlace.getText().toString();
-                final Date birthDay = etBirthDay.getText().toString();
-                final Date contractStart = etContractStart.getText().toString();
-                final Date contractEnd = etContractEnd.getText().toString();
+                final String birthDay = etBirthDay.getText().toString();
+                final int position = Integer.parseInt(etIDPosition.getText().toString());
+                final String contractStart = etContractStart.getText().toString();
+                final String contractEnd = etContractEnd.getText().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -76,29 +74,29 @@ public class DetailEmployee extends AppCompatActivity {
                             int code = jsonObject.getInt("code");
 
                             if (code==200){
-                                Toast.makeText(DetailEmployee.this,"Menu updated" ,Toast.LENGTH_LONG).show();
+                                Toast.makeText(DetailEmployee.this,"Employee updated" ,Toast.LENGTH_LONG).show();
                                 Intent successIntent = new Intent(DetailEmployee.this, AdminActivity.class);
                                 DetailEmployee.this.startActivity(successIntent);
                             }
                             else{
-                                Toast.makeText(DetailMenuMakanan.this,"Menu not updated" ,Toast.LENGTH_LONG).show();
+                                Toast.makeText(DetailEmployee.this,"Employee not updated" ,Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
                 };
-                UpdateMenuMakananRequest updateMenuMakananRequest= new UpdateMenuMakananRequest(idMakanan,namaMakanan,hargaMakanan,deskripsiMakanan,responseListener);
-                RequestQueue queue = Volley.newRequestQueue(DetailMenuMakanan.this);
-                queue.add(updateMenuMakananRequest);
+                UpdateEmployeeRequest updateEmployeeRequest= new UpdateEmployeeRequest(id_employee,name,birthPlace,birthDay,position,contractStart,contractEnd,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(DetailEmployee.this);
+                queue.add(updateEmployeeRequest);
             }
         });
 
         // action delete
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
+        btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final int idMakanan = Integer.parseInt(etIDMakanan.getText().toString());
+                final int id_employee = Integer.parseInt(etID.getText().toString());
                 Response.Listener<String> deleteResponse = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -107,23 +105,23 @@ public class DetailEmployee extends AppCompatActivity {
                             int code = jsonObject.getInt("code");
 
                             if (code==200){
-                                Toast.makeText(DetailMenuMakanan.this,"Menu deleted" ,Toast.LENGTH_LONG).show();
-                                Intent successIntent = new Intent(DetailMenuMakanan.this, AdminActivity.class);
-                                DetailMenuMakanan.this.startActivity(successIntent);
+                                Toast.makeText(DetailEmployee.this,"Employee deleted" ,Toast.LENGTH_LONG).show();
+                                Intent successIntent = new Intent(DetailEmployee.this, AdminActivity.class);
+                                DetailEmployee.this.startActivity(successIntent);
                             }
                             else{
-                                Toast.makeText(DetailMenuMakanan.this,"Menu not deleted" ,Toast.LENGTH_LONG).show();
+                                Toast.makeText(DetailEmployee.this,"Employee not deleted" ,Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
                 };
-                DeleteMenuMakananRequest deleteMenuMakananRequest= new DeleteMenuMakananRequest(idMakanan,deleteResponse);
-                RequestQueue queue = Volley.newRequestQueue(DetailMenuMakanan.this);
-                queue.add(deleteMenuMakananRequest);
+                DeleteEmployeeRequest deleteEmployeeRequest= new DeleteEmployeeRequest(id_employee,deleteResponse);
+                RequestQueue queue = Volley.newRequestQueue(DetailEmployee.this);
+                queue.add(deleteEmployeeRequest);
             }
-        });*/
+        });
 
     }
 }
