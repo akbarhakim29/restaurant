@@ -37,7 +37,11 @@
         <activity android:name=".Table.ListTable" />
         <activity android:name=".Table.DetailTable" />
         <activity android:name=".Inventory.ListInventory" />
-        <activity android:name=".Inventory.DetailInventory"></activity>
+        <activity android:name=".Inventory.DetailInventory" />
+        <activity android:name=".Customer.ListCustomer" />
+        <activity android:name=".Customer.DetailCustomer" />
+        <activity android:name=".Order.ListOrder" />
+        <activity android:name=".Order.DetailOrder"></activity>
     </application>
 
 </manifest>

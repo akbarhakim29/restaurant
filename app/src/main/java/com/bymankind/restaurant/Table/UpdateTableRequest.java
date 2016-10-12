@@ -12,11 +12,11 @@ import java.util.Map;
  */
 
 public class UpdateTableRequest extends StringRequest {
-    private final static String UPDATE_REQUEST_URL = "http://192.168.100.2/restoserver/api/updateTable";
+    private final static String UPDATE_TABLE_REQUEST_URL = "http://192.168.100.8/restoserver/api/updateTable";
     private Map<String, String> params;
 
     public UpdateTableRequest(int id_table, int id_status, Response.Listener<String> listener){
-        super(Request.Method.POST , UPDATE_REQUEST_URL, listener , null);
+        super(Request.Method.POST , UPDATE_TABLE_REQUEST_URL, listener , null);
         params = new HashMap<>();
         params.put("id_table",id_table+"");
         params.put("id_status",id_status+"");

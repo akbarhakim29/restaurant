@@ -12,11 +12,11 @@ import java.util.Map;
  */
 
 public class UpdateInventoryRequest extends StringRequest{
-    private final static String UPDATE_REQUEST_URL = "http://192.168.100.2/restoserver/api/updateInventory";
+    private final static String UPDATE_INVENTORY_REQUEST_URL = "http://192.168.100.8/restoserver/api/updateInventory";
     private Map<String, String> params;
 
     public UpdateInventoryRequest(int id_inventory, String name, int amount, String description, Response.Listener<String> listener){
-        super(Request.Method.POST , UPDATE_REQUEST_URL, listener , null);
+        super(Request.Method.POST , UPDATE_INVENTORY_REQUEST_URL, listener , null);
         params = new HashMap<>();
         params.put("id_inventory",id_inventory+"");
         params.put("name",name);

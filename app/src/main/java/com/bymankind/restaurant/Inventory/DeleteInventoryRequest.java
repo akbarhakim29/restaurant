@@ -12,11 +12,11 @@ import java.util.Map;
  */
 
 public class DeleteInventoryRequest extends StringRequest{
-    private final static String DELETE_REQUEST_URL = "http://192.168.100.2/restoserver/api/deleteInventory";
+    private final static String DELETE_INVENTORY_REQUEST_URL = "http://192.168.100.8/restoserver/api/deleteInventory";
     private Map<String, String> params;
 
     public DeleteInventoryRequest(int id_inventory, Response.Listener<String> listener){
-        super(Request.Method.POST , DELETE_REQUEST_URL, listener , null);
+        super(Request.Method.POST , DELETE_INVENTORY_REQUEST_URL, listener , null);
         params = new HashMap<>();
         params.put("id_inventory",id_inventory+"");
     }

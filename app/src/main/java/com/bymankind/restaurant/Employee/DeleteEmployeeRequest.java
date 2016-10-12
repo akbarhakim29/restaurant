@@ -12,11 +12,11 @@ import java.util.Map;
  */
 
 public class DeleteEmployeeRequest extends StringRequest{
-    private final static String DELETE_REQUEST_URL = "http://192.168.100.14/restoserver/api/deleteEmployee";
+    private final static String DELETE_EMPLOYEE_REQUEST_URL = "http://192.168.100.8/restoserver/api/deleteEmployee";
     private Map<String, String> params;
 
     public DeleteEmployeeRequest(int id_employee, Response.Listener<String> listener){
-        super(Request.Method.POST , DELETE_REQUEST_URL, listener , null);
+        super(Request.Method.POST , DELETE_EMPLOYEE_REQUEST_URL, listener , null);
         params = new HashMap<>();
         params.put("id_employee",id_employee+"");
     }

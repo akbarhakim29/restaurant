@@ -12,11 +12,11 @@ import java.util.Map;
  */
 
 public class DeleteTableRequest extends StringRequest{
-    private final static String DELETE_REQUEST_URL = "http://192.168.100.2/restoserver/api/deleteTable";
+    private final static String DELETE_TABLE_REQUEST_URL = "http://192.168.100.8/restoserver/api/deleteTable";
     private Map<String, String> params;
 
     public DeleteTableRequest(int id_table, Response.Listener<String> listener){
-        super(Request.Method.POST , DELETE_REQUEST_URL, listener , null);
+        super(Request.Method.POST , DELETE_TABLE_REQUEST_URL, listener , null);
         params = new HashMap<>();
         params.put("id_table",id_table+"");
     }
