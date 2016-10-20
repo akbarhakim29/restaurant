@@ -1,6 +1,7 @@
 package com.bymankind.restaurant.TypesOfMenu;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import com.bymankind.restaurant.Employee.DetailEmployee;
 import com.bymankind.restaurant.Employee.DetailEmployeeRequest;
 import com.bymankind.restaurant.Employee.ListEmployee;
 import com.bymankind.restaurant.Employee.ParseJSONEmployee;
+import com.bymankind.restaurant.Position.CreatePosition;
+import com.bymankind.restaurant.Position.ListPosition;
 import com.bymankind.restaurant.R;
 
 import org.json.JSONArray;
@@ -32,9 +35,19 @@ public class ListTypesofmenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_typesofmenu);
-        listView =  (ListView) findViewById(R.id.lvToM);
+        setContentView(R.layout.list_view);
+        listView =  (ListView) findViewById(R.id.lvAll);
         sendRequest();
+
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent createToMIntent = new Intent(ListTypesofmenu.this, CreateTypesofmenu.class);
+                startActivity(createToMIntent);
+            }
+        });
     }
 
     private void sendRequest(){

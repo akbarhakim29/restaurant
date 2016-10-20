@@ -10,4 +10,10 @@
     <string name="order">Order</string>
     <string name="inventory">Inventory</string>
     <string name="title_activity_detail_position">DetailPosition</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

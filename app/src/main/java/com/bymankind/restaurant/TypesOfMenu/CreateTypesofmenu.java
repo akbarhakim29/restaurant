@@ -1,4 +1,4 @@
-package com.bymankind.restaurant.Menu;
+package com.bymankind.restaurant.TypesOfMenu;
 
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -13,51 +13,46 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.bymankind.restaurant.AdminActivity;
+import com.bymankind.restaurant.Position.CreatePosition;
+import com.bymankind.restaurant.Position.CreatePositionRequest;
 import com.bymankind.restaurant.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class CreateMenu extends AppCompatActivity {
+public class CreateTypesofmenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_menu);
+        setContentView(R.layout.create_typesofmenu);
 
-        final EditText etID_Types_of_Menu = (EditText) findViewById(R.id.etIDToM);
         final EditText etName = (EditText) findViewById(R.id.etName);
-        final EditText etPrice = (EditText) findViewById(R.id.etPrice);
-        final EditText etPicture = (EditText) findViewById(R.id.etPicture);
         final EditText etDescription = (EditText) findViewById(R.id.etDescription);
-        final Button buttonCreated = (Button) findViewById(R.id.btnCreate);
+        final Button buttonCreate = (Button) findViewById(R.id.btnCreate);
 
-        buttonCreated.setOnClickListener(new View.OnClickListener() {
+        buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                final int id_types_of_menu = Integer.parseInt(etID_Types_of_Menu.getText().toString());
                 final String name = etName.getText().toString();
-                final int price = Integer.parseInt(etPrice.getText().toString());
                 final String description = etDescription.getText().toString();
-                final String picture = etPicture.getText().toString();
 
                 Response.Listener<String> responseListener= new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
                             int code = jsonResponse.getInt("code");
 
                             if (code==200){
-                                Toast.makeText(CreateMenu.this,"data inserted" ,Toast.LENGTH_LONG).show();
-                                Intent successIntent = new Intent(CreateMenu.this, AdminActivity.class);
-                                CreateMenu.this.startActivity(successIntent);
+                                Toast.makeText(CreateTypesofmenu.this,"data inserted" ,Toast.LENGTH_LONG).show();
+                                Intent successIntent = new Intent(CreateTypesofmenu.this, AdminActivity.class);
+                                CreateTypesofmenu.this.startActivity(successIntent);
                             }
                             else{
-                                AlertDialog.Builder builder = new AlertDialog.Builder(CreateMenu.this);
-                                builder.setMessage("insert data failed")
+                                AlertDialog.Builder builder = new AlertDialog.Builder(CreateTypesofmenu.this);
+                                builder.setMessage("Data not inserted")
                                         .setNegativeButton("Retry",null)
                                         .create()
                                         .show();
@@ -68,9 +63,9 @@ public class CreateMenu extends AppCompatActivity {
                         }
                     }
                 };
-                CreateMenuRequest createMenuRequest = new CreateMenuRequest(id_types_of_menu,name,price,picture,description,responseListener);
-                RequestQueue queue = Volley.newRequestQueue(CreateMenu.this);
-                queue.add(createMenuRequest);
+                CreateTypesofmenuRequest createTypesofmenuRequest = new CreateTypesofmenuRequest(name,description,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(CreateTypesofmenu.this);
+                queue.add(createTypesofmenuRequest);
             }
         });
     }

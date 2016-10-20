@@ -1,6 +1,7 @@
 package com.bymankind.restaurant.Position;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,11 +28,20 @@ public class ListPosition extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_position);
+        setContentView(R.layout.list_view);
 
-        listView =  (ListView) findViewById(R.id.lvPosition);
+        listView =  (ListView) findViewById(R.id.lvAll);
         sendRequest();
 
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent createPositionIntent = new Intent(ListPosition.this, CreatePosition.class);
+                startActivity(createPositionIntent);
+            }
+        });
     }
     private void sendRequest(){
         StringRequest stringRequest = new StringRequest(JSON_URL,

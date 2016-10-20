@@ -24,8 +24,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
-        final EditText etPassword = (EditText) findViewById(R.id.etSalary);
-        final Button buttonLogin = (Button) findViewById(R.id.buttonLogin);
+        final EditText etPassword = (EditText) findViewById(R.id.etPassword);
+        final Button buttonLogin = (Button) findViewById(R.id.btnLogin);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,22 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                             int id_position =jo.getInt("id_position");
                             String username = jo.getString("username");
 
-                            if (code == 200 && id_position == 6){
-                                Intent kokiIntent = new Intent(LoginActivity.this, KokiActivity.class);
-                                kokiIntent.putExtra("username", username);
-                                startActivity(kokiIntent);
-                            }
-                            else if (code == 200 && id_position == 4){
-                                Intent pramusajiIntent = new Intent(LoginActivity.this, PramusajiActivity.class);
-                                pramusajiIntent.putExtra("username",username);
-                                LoginActivity.this.startActivity(pramusajiIntent);
-                            }
-                            else if (code == 200 && id_position == 5){
-                                Intent kasirIntent = new Intent(LoginActivity.this, KasirActivity.class);
-                                kasirIntent.putExtra("username",username);
-                                LoginActivity.this.startActivity(kasirIntent);
-                            }
-                            else if (code == 200 && id_position == 7){
+                            if (code == 200 && id_position == 7){
                                 Intent adminIntent = new Intent(LoginActivity.this, AdminActivity.class);
                                 adminIntent.putExtra("username",username);
                                 LoginActivity.this.startActivity(adminIntent);

@@ -1,6 +1,7 @@
 package com.bymankind.restaurant.Inventory;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,10 +28,20 @@ public class ListInventory extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_inventory);
+        setContentView(R.layout.list_view);
 
-        listView =  (ListView) findViewById(R.id.lvInventory);
+        listView =  (ListView) findViewById(R.id.lvAll);
         sendRequest();
+
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent createInventoryIntent = new Intent(ListInventory.this, CreateInventory.class);
+                startActivity(createInventoryIntent);
+            }
+        });
     }
 
     private void sendRequest(){

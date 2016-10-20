@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_employee"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,15 +9,31 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.bymankind.restaurant.Menu.CreateMenu">
+    tools:context="com.bymankind.restaurant.Employee.CreateEmployee">
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
         android:ems="10"
-        android:id="@+id/etIDToM"
+        android:id="@+id/etIDPosition"
+        android:inputType="number"
         android:hint="ID Position" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/etUsername"
+        android:hint="Username" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/etPassword"
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <EditText
         android:layout_width="match_parent"
@@ -29,26 +46,42 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/etPrice"
-        android:hint="Price" />
+        android:id="@+id/etBirthPlace"
+        android:hint="BirthPlace" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/etBirthDay"
+        android:hint="Birthday (yyyy-mm-dd)" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/etPicture"
-        android:hint="Url Picture" />
+        android:id="@+id/etLastEducation"
+        android:hint="Last Education" />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/etDescription"
-        android:hint="Description" />
+        android:id="@+id/etContractStart"
+        android:hint="Contract Start" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/etContractEnd"
+        android:hint="Contract end" />
 
     <Button
         android:text="INSERT"

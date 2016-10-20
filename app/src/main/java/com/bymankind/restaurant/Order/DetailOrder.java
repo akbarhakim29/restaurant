@@ -12,9 +12,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.bymankind.restaurant.AdminActivity;
-import com.bymankind.restaurant.Customer.DeleteCustomerRequest;
-import com.bymankind.restaurant.Customer.DetailCustomer;
-import com.bymankind.restaurant.Customer.UpdateCustomerRequest;
 import com.bymankind.restaurant.R;
 
 import org.json.JSONException;

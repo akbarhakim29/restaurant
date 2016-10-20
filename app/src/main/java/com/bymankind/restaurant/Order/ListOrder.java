@@ -27,9 +27,9 @@ public class ListOrder extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_order);
+        setContentView(R.layout.list_view);
 
-        listView =  (ListView) findViewById(R.id.lvOrder);
+        listView =  (ListView) findViewById(R.id.lvAll);
         sendRequest();
     }
 

@@ -17,6 +17,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bymankind.restaurant.Inventory.CreateInventory;
+import com.bymankind.restaurant.Inventory.ListInventory;
 import com.bymankind.restaurant.R;
 
 import org.json.JSONArray;
@@ -31,10 +33,20 @@ public class ListEmployee extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_employee);
+        setContentView(R.layout.list_view);
 
-        listView =  (ListView) findViewById(R.id.lvEmployee);
+        listView =  (ListView) findViewById(R.id.lvAll);
         sendRequest();
+
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent createEmployeeIntent = new Intent(ListEmployee.this, CreateEmployee.class);
+                startActivity(createEmployeeIntent);
+            }
+        });
     }
 
     private void sendRequest(){

@@ -1,6 +1,7 @@
 package com.bymankind.restaurant.Table;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,11 +15,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bymankind.restaurant.Employee.CustomListEmployee;
-import com.bymankind.restaurant.Employee.DetailEmployee;
-import com.bymankind.restaurant.Employee.DetailEmployeeRequest;
-import com.bymankind.restaurant.Employee.ListEmployee;
-import com.bymankind.restaurant.Employee.ParseJSONEmployee;
 import com.bymankind.restaurant.R;
 
 import org.json.JSONArray;
@@ -32,10 +28,20 @@ public class ListTable extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_table);
+        setContentView(R.layout.list_view);
 
-        listView =  (ListView) findViewById(R.id.lvTable);
+        listView =  (ListView) findViewById(R.id.lvAll);
         sendRequest();
+
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent createTableIntent = new Intent(ListTable.this, CreateTable.class);
+                startActivity(createTableIntent);
+            }
+        });
     }
 
     private void sendRequest(){

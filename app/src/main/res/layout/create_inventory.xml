@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_inventory"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,15 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.bymankind.restaurant.Menu.CreateMenu">
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/etIDToM"
-        android:hint="ID Position" />
+    tools:context="com.bymankind.restaurant.Inventory.CreateInventory">
 
     <EditText
         android:layout_width="match_parent"
@@ -29,25 +22,17 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/amount"
         android:inputType="number"
-        android:ems="10"
-        android:id="@+id/etPrice"
-        android:hint="Price" />
+        android:hint="Amount" />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/etPicture"
-        android:hint="Url Picture" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/etDescription"
+        android:layout_height="100dp"
         android:hint="Description" />
 
     <Button

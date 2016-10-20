@@ -1,4 +1,4 @@
-package com.bymankind.restaurant.Menu;
+package com.bymankind.restaurant.Inventory;
 
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -18,17 +18,15 @@ import com.bymankind.restaurant.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class CreateMenu extends AppCompatActivity {
+public class CreateInventory extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_menu);
+        setContentView(R.layout.create_inventory);
 
-        final EditText etID_Types_of_Menu = (EditText) findViewById(R.id.etIDToM);
         final EditText etName = (EditText) findViewById(R.id.etName);
-        final EditText etPrice = (EditText) findViewById(R.id.etPrice);
-        final EditText etPicture = (EditText) findViewById(R.id.etPicture);
+        final EditText etAmount = (EditText) findViewById(R.id.etAmount);
         final EditText etDescription = (EditText) findViewById(R.id.etDescription);
         final Button buttonCreated = (Button) findViewById(R.id.btnCreate);
 
@@ -36,11 +34,9 @@ public class CreateMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                final int id_types_of_menu = Integer.parseInt(etID_Types_of_Menu.getText().toString());
                 final String name = etName.getText().toString();
-                final int price = Integer.parseInt(etPrice.getText().toString());
+                final int amount = Integer.parseInt(etAmount.getText().toString());
                 final String description = etDescription.getText().toString();
-                final String picture = etPicture.getText().toString();
 
                 Response.Listener<String> responseListener= new Response.Listener<String>() {
                     @Override
@@ -51,12 +47,12 @@ public class CreateMenu extends AppCompatActivity {
                             int code = jsonResponse.getInt("code");
 
                             if (code==200){
-                                Toast.makeText(CreateMenu.this,"data inserted" ,Toast.LENGTH_LONG).show();
-                                Intent successIntent = new Intent(CreateMenu.this, AdminActivity.class);
-                                CreateMenu.this.startActivity(successIntent);
+                                Toast.makeText(CreateInventory.this,"data inserted" ,Toast.LENGTH_LONG).show();
+                                Intent successIntent = new Intent(CreateInventory.this, AdminActivity.class);
+                                CreateInventory.this.startActivity(successIntent);
                             }
                             else{
-                                AlertDialog.Builder builder = new AlertDialog.Builder(CreateMenu.this);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(CreateInventory.this);
                                 builder.setMessage("insert data failed")
                                         .setNegativeButton("Retry",null)
                                         .create()
@@ -68,9 +64,9 @@ public class CreateMenu extends AppCompatActivity {
                         }
                     }
                 };
-                CreateMenuRequest createMenuRequest = new CreateMenuRequest(id_types_of_menu,name,price,picture,description,responseListener);
-                RequestQueue queue = Volley.newRequestQueue(CreateMenu.this);
-                queue.add(createMenuRequest);
+                CreateInventoryRequest createInventoryRequest = new CreateInventoryRequest(name,amount,description,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(CreateInventory.this);
+                queue.add(createInventoryRequest);
             }
         });
     }

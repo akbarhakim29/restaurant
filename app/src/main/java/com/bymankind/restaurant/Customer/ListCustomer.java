@@ -27,9 +27,9 @@ public class ListCustomer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_customer);
+        setContentView(R.layout.list_view);
 
-        listView =  (ListView) findViewById(R.id.lvCustomer);
+        listView =  (ListView) findViewById(R.id.lvAll);
         sendRequest();
     }
 

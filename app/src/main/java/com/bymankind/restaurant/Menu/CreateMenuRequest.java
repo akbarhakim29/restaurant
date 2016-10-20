@@ -13,10 +13,10 @@ public class CreateMenuRequest extends StringRequest{
     private final static String CREATE_MENU_REQUEST_URL = "http://192.168.100.8/restoserver/api/insertMenu";
     private Map<String, String> params;
 
-     public CreateMenuRequest(int id_kind_of_menu, String name, int price, String picture, String description, Response.Listener<String> listener){
+     public CreateMenuRequest(int id_types_of_menu, String name, int price, String picture, String description, Response.Listener<String> listener){
          super(Method.POST , CREATE_MENU_REQUEST_URL, listener , null);
          params = new HashMap<>();
-         params.put("id_kind_of_menu",id_kind_of_menu+"");
+         params.put("id_types_of_menu",id_types_of_menu+"");
          params.put("name",name);
          params.put("price",price+"");
          params.put("picture",picture);

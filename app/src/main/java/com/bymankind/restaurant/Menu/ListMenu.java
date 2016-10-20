@@ -1,6 +1,7 @@
 package com.bymankind.restaurant.Menu;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,8 +21,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static java.lang.Integer.parseInt;
-
 public class ListMenu extends AppCompatActivity {
     public static final String JSON_URL = "http://192.168.100.8/restoserver/api/getAllMenu";
     private ListView listView;
@@ -29,11 +28,20 @@ public class ListMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_menu);
+        setContentView(R.layout.list_view);
 
-        listView =  (ListView) findViewById(R.id.lvMenuMakanan);
+        listView =  (ListView) findViewById(R.id.lvAll);
         sendRequest();
 
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent createMenuIntent = new Intent(ListMenu.this, CreateMenu.class);
+                startActivity(createMenuIntent);
+            }
+        });
     }
 
     private void sendRequest(){
