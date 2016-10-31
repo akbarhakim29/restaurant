@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 public class DeleteOrderRequest extends StringRequest {
-    private final static String DELETE_ORDER_REQUEST_URL = "http://192.168.100.8/restoserver/api/deleteOrder";
+    private final static String DELETE_ORDER_REQUEST_URL = "http://192.168.100.30/restoserver/api/deleteOrder";
     private Map<String, String> params;
 
     public DeleteOrderRequest(int id_transaction, Response.Listener<String> listener){

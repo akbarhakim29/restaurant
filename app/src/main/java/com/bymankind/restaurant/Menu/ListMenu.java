@@ -22,7 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ListMenu extends AppCompatActivity {
-    public static final String JSON_URL = "http://192.168.100.8/restoserver/api/getAllMenu";
+    public static final String JSON_URL = "http://192.168.100.30/restoserver/api/getAllMenu";
     private ListView listView;
 
     @Override
@@ -65,7 +65,7 @@ public class ListMenu extends AppCompatActivity {
     private void showJSON(String json){
         ParseJSONMenu pj = new ParseJSONMenu(json);
         pj.parseJSON();
-        final CustomListMenu cl = new CustomListMenu(this, ParseJSONMenu.id_menu, ParseJSONMenu.name, ParseJSONMenu.price, ParseJSONMenu.description);
+        final CustomListMenu cl = new CustomListMenu(this, ParseJSONMenu.id_menu, ParseJSONMenu.name, ParseJSONMenu.price, ParseJSONMenu.picture, ParseJSONMenu.description);
         listView.setAdapter(cl);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

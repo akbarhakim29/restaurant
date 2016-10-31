@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 public class DetailInventoryRequest extends StringRequest{
-    private final static String DETAIL_INVENTORY_REQUEST_URL = "http://192.168.100.8/restoserver/api/getInventory";
+    private final static String DETAIL_INVENTORY_REQUEST_URL = "http://192.168.100.30/restoserver/api/getInventory";
     private Map<String, String> params;
 
     public DetailInventoryRequest(String id_inventory, Response.Listener<String> listener){

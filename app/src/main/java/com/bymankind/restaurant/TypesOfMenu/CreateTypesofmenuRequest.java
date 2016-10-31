@@ -11,7 +11,7 @@ import java.util.Map;
  */
 
 public class CreateTypesofmenuRequest extends StringRequest {
-    private final static String CREATE_TOM_REQUEST_URL = "http://192.168.100.8/restoserver/api/insertToM";
+    private final static String CREATE_TOM_REQUEST_URL = "http://192.168.100.30/restoserver/api/insertToM";
     private Map<String, String> params;
 
     public CreateTypesofmenuRequest(String name, String description, Response.Listener<String> listener){

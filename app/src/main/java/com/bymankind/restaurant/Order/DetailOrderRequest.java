@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 public class DetailOrderRequest extends StringRequest{
-    private final static String DETAIL_ORDER_REQUEST_URL = "http://192.168.100.8/restoserver/api/getOrder";
+    private final static String DETAIL_ORDER_REQUEST_URL = "http://192.168.100.30/restoserver/api/getOrder";
     private Map<String, String> params;
 
     public DetailOrderRequest(String id_transaction, Response.Listener<String> listener){

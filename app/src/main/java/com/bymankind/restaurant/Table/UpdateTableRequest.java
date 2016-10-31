@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 public class UpdateTableRequest extends StringRequest {
-    private final static String UPDATE_TABLE_REQUEST_URL = "http://192.168.100.8/restoserver/api/updateTable";
+    private final static String UPDATE_TABLE_REQUEST_URL = "http://192.168.100.30/restoserver/api/updateTable";
     private Map<String, String> params;
 
     public UpdateTableRequest(int id_table, int id_status, Response.Listener<String> listener){
