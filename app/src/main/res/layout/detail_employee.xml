@@ -100,7 +100,8 @@
         android:layout_alignBaseline="@+id/etBirthPlace"
         android:layout_alignBottom="@+id/etBirthPlace"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:focusable="false"/>
 
     <TextView
         android:text="Contract Start"
@@ -119,7 +120,8 @@
         android:id="@+id/etContractStart"
         android:layout_below="@+id/textView17"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:focusable="false"/>
 
     <TextView
         android:text="Contract End"
@@ -138,7 +140,8 @@
         android:id="@+id/etContractEnd"
         android:layout_below="@+id/textView18"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:focusable="false"/>
 
     <Button
         android:text="DELETE"

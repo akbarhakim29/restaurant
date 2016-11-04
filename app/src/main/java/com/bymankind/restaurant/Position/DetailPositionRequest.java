@@ -11,7 +11,7 @@ import java.util.Map;
  */
 
 public class DetailPositionRequest extends StringRequest{
-    private final static String DETAIL_POSITION_REQUEST_URL = "http://192.168.100.30/restoserver/api/getPosition";
+    private final static String DETAIL_POSITION_REQUEST_URL = "http://192.168.100.4/restoserver/api/getPosition";
     private Map<String, String> params;
 
     public DetailPositionRequest(String id_position, Response.Listener<String> listener){

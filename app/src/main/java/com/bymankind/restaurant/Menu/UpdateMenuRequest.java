@@ -11,7 +11,7 @@ import java.util.Map;
  * Created by Server-Panduit on 8/3/2016.
  */
 public class UpdateMenuRequest extends StringRequest{
-    private final static String UPDATE_MENU_REQUEST_URL = "http://192.168.100.30/restoserver/api/updateMenu";
+    private final static String UPDATE_MENU_REQUEST_URL = "http://192.168.100.4/restoserver/api/updateMenu";
     private Map<String, String> params;
 
     public UpdateMenuRequest(int id_menu, String name, int price, String description, Response.Listener<String> listener){

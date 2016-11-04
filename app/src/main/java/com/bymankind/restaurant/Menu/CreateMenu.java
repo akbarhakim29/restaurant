@@ -148,7 +148,7 @@ public class CreateMenu extends AppCompatActivity {
                 selectedPhoto = photoPath;
 
                 try {
-                    Bitmap bitmap = ImageLoader.init().from(photoPath).requestSize(100,100).getBitmap();
+                    Bitmap bitmap = ImageLoader.init().from(photoPath).requestSize(300,300).getBitmap();
                     ivImage.setImageBitmap(getRotateBitmap(bitmap,90)); //use method rotate image
                 } catch (FileNotFoundException e) {
                     Toast.makeText(getApplicationContext(),
@@ -162,7 +162,7 @@ public class CreateMenu extends AppCompatActivity {
                 String photoPath = galleryPhoto.getPath();
                 selectedPhoto = photoPath;
                 try {
-                    Bitmap bitmap = ImageLoader.init().from(photoPath).requestSize(100,100).getBitmap();
+                    Bitmap bitmap = ImageLoader.init().from(photoPath).requestSize(300,300).getBitmap();
                     ivImage.setImageBitmap(bitmap);
                 } catch (FileNotFoundException e) {
                     Toast.makeText(getApplicationContext(),

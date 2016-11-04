@@ -57,7 +57,8 @@
         android:inputType="date"
         android:ems="10"
         android:id="@+id/etBirthDay"
-        android:hint="Birthday (yyyy-mm-dd)" />
+        android:hint="Birthday"
+        android:focusable="false"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -70,18 +71,20 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="date"
         android:ems="10"
         android:id="@+id/etContractStart"
-        android:hint="Contract Start" />
+        android:hint="Contract Start"
+        android:focusable="false"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="date"
         android:ems="10"
         android:id="@+id/etContractEnd"
-        android:hint="Contract end" />
+        android:hint="Contract end"
+        android:focusable="false"/>
 
     <Button
         android:text="INSERT"

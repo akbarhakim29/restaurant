@@ -1,10 +1,12 @@
 package com.bymankind.restaurant.Employee;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,6 +18,8 @@ import com.bymankind.restaurant.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Calendar;
 
 public class DetailEmployee extends AppCompatActivity {
 
@@ -53,7 +57,50 @@ public class DetailEmployee extends AppCompatActivity {
         etContractStart.setText(contractStart);
         etContractEnd.setText(contractEnd);
 
+        Calendar mcurrentDate=Calendar.getInstance();
+        final int mYear  = mcurrentDate.get(Calendar.YEAR);
+        final int mMonth = mcurrentDate.get(Calendar.MONTH);
+        final int mDay   = mcurrentDate.get(Calendar.DAY_OF_MONTH);
 
+
+        etBirthDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog mDatePicker=new DatePickerDialog(DetailEmployee.this, new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                        etBirthDay.setText(selectedyear+"-"+selectedmonth+"-"+selectedday);
+                    }
+                },mYear, mMonth, mDay);
+                mDatePicker.setTitle("Select date");
+                mDatePicker.show();
+            }
+        });
+
+        etContractStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog mDatePicker=new DatePickerDialog(DetailEmployee.this, new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                        etContractStart.setText(selectedyear+"-"+selectedmonth+"-"+selectedday);
+                    }
+                },mYear, mMonth, mDay);
+                mDatePicker.setTitle("Select date");
+                mDatePicker.show();
+            }
+        });
+
+        etContractEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog mDatePicker=new DatePickerDialog(DetailEmployee.this, new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                        etContractEnd.setText(selectedyear+"-"+selectedmonth+"-"+selectedday);
+                    }
+                },mYear, mMonth, mDay);
+                mDatePicker.setTitle("Select date");
+                mDatePicker.show();
+            }
+        });
         // action update
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override

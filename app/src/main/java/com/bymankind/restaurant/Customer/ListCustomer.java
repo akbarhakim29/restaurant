@@ -21,7 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ListCustomer extends AppCompatActivity {
-    public static final String JSON_URL = "http://192.168.100.30/restoserver/api/getAllCustomer";
+    public static final String JSON_URL = "http://192.168.100.4/restoserver/api/getAllCustomer";
     private ListView listView;
 
     @Override

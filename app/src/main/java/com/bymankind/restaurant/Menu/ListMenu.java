@@ -6,6 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,8 +22,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ListMenu extends AppCompatActivity {
-    public static final String JSON_URL = "http://192.168.100.30/restoserver/api/getAllMenu";
+public class ListMenu extends AppCompatActivity{
+    public static final String JSON_URL = "http://192.168.100.4/restoserver/api/getAllMenu";
     private ListView listView;
 
     @Override
@@ -65,7 +66,7 @@ public class ListMenu extends AppCompatActivity {
     private void showJSON(String json){
         ParseJSONMenu pj = new ParseJSONMenu(json);
         pj.parseJSON();
-        final CustomListMenu cl = new CustomListMenu(this, ParseJSONMenu.id_menu, ParseJSONMenu.name, ParseJSONMenu.price, ParseJSONMenu.picture, ParseJSONMenu.description);
+        final CustomListMenu cl = new CustomListMenu(this, ParseJSONMenu.id_menu, ParseJSONMenu.name, ParseJSONMenu.price, ParseJSONMenu.bitmaps, ParseJSONMenu.description);
         listView.setAdapter(cl);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
