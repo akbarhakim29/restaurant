@@ -22,7 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ListPosition extends AppCompatActivity{
-    public static final String JSON_URL = "http://192.168.100.4/restoserver/api/getAllPosition";
+    public static final String JSON_URL = "http://192.168.100.37/restoserver/api/getAllPosition";
     private ListView listView;
 
     @Override

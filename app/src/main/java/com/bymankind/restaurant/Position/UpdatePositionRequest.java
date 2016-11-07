@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by Server-Panduit on 7/22/2016.
  */
 public class UpdatePositionRequest extends StringRequest {
-    private final static String UPDATE_POSITION_REQUEST_URL = "http://192.168.100.4/restoserver/api/updatePosition";
+    private final static String UPDATE_POSITION_REQUEST_URL = "http://192.168.100.37/restoserver/api/updatePosition";
     private Map<String, String> params;
 
     public UpdatePositionRequest(int id_position, String name, int salary, Response.Listener<String> listener){

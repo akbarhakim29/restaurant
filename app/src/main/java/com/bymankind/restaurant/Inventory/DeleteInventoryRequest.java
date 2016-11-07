@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 public class DeleteInventoryRequest extends StringRequest{
-    private final static String DELETE_INVENTORY_REQUEST_URL = "http://192.168.100.4/restoserver/api/deleteInventory";
+    private final static String DELETE_INVENTORY_REQUEST_URL = "http://192.168.100.37/restoserver/api/deleteInventory";
     private Map<String, String> params;
 
     public DeleteInventoryRequest(int id_inventory, Response.Listener<String> listener){

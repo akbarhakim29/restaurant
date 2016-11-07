@@ -70,7 +70,7 @@ public class ParseJSONMenu {
                 picture[i] = jo.getString(KEY_PICTURE);
                 description[i] = jo.getString(KEY_DESCRIPTION);
 
-                bitmaps[i] = getImage(jo);
+                bitmaps[i] = getImage(KEY_PICTURE);
 
             }
         }
@@ -79,7 +79,7 @@ public class ParseJSONMenu {
         }
     }
 
-    private Bitmap getImage(JSONObject jo) {
+    private Bitmap getImage(String jo) {
 
         Bitmap bitmap = null;
         InputStream stream = null;

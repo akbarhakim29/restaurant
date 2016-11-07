@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 public class DeleteEmployeeRequest extends StringRequest{
-    private final static String DELETE_EMPLOYEE_REQUEST_URL = "http://192.168.100.4/restoserver/api/deleteEmployee";
+    private final static String DELETE_EMPLOYEE_REQUEST_URL = "http://192.168.100.37/restoserver/api/deleteEmployee";
     private Map<String, String> params;
 
     public DeleteEmployeeRequest(int id_employee, Response.Listener<String> listener){
