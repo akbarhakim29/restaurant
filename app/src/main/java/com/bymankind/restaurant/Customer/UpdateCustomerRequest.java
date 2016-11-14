@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 public class UpdateCustomerRequest extends StringRequest{
-    private final static String UPDATE_CUSTOMER_REQUEST_URL = "http://192.168.100.37/restoserver/api/updateCustomer";
+    private final static String UPDATE_CUSTOMER_REQUEST_URL = "http://192.168.100.5/restoserver/api/updateCustomer";
     private Map<String, String> params;
 
     public UpdateCustomerRequest(int id_customer, int id_customer_status,String name,String address,String telephone, Response.Listener<String> listener) {

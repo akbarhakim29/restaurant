@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 public class DeleteTypesofmenuRequest extends StringRequest{
-    private final static String DELETE_REQUEST_URL = "http://192.168.100.37/restoserver/api/deleteToM";
+    private final static String DELETE_REQUEST_URL = "http://192.168.100.5/restoserver/api/deleteToM";
     private Map<String, String> params;
 
     public DeleteTypesofmenuRequest(int id_types_of_menu, Response.Listener<String> listener){

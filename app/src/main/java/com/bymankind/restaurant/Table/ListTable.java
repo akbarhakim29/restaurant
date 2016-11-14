@@ -22,7 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ListTable extends AppCompatActivity {
-    public static final String JSON_URL = "http://192.168.100.37/restoserver/api/getAllTable";
+    public static final String JSON_URL = "http://192.168.100.5/restoserver/api/getAllTable";
     private ListView listView;
 
     @Override

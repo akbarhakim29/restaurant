@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 public class UpdateOrderRequest extends StringRequest{
-    private final static String UPDATE_ORDER_REQUEST_URL = "http://192.168.100.37/restoserver/api/updateOrder";
+    private final static String UPDATE_ORDER_REQUEST_URL = "http://192.168.100.5/restoserver/api/updateOrder";
     private Map<String, String> params;
 
     public UpdateOrderRequest(int id_transaction,int id_table,int id_menu,int quantity,int id_order_status,

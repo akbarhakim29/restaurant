@@ -27,7 +27,7 @@ import org.json.JSONObject;
 
 
 public class ListEmployee extends AppCompatActivity {
-    public static final String JSON_URL = "http://192.168.100.37/restoserver/api/getAllEmployee";
+    public static final String JSON_URL = "http://192.168.100.5/restoserver/api/getAllEmployee";
     private ListView listView;
 
     @Override

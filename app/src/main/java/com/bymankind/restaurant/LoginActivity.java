@@ -1,12 +1,14 @@
 package com.bymankind.restaurant;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -23,9 +25,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        final TextView title = (TextView) findViewById(R.id.Title);
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
         final Button buttonLogin = (Button) findViewById(R.id.btnLogin);
+
+        Typeface face = Typeface.createFromAsset(getAssets(),"fonts/Roboto-Black.ttf");
+        title.setTypeface(face);
+        etUsername.setTypeface(face);
+        etPassword.setTypeface(face);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +50,6 @@ public class LoginActivity extends AppCompatActivity {
                             JSONArray jsonChildObject = jsonResponse.getJSONArray("data");
                             JSONObject jo = jsonChildObject.getJSONObject(0);
                             int code = jsonResponse.getInt("code");
-
                             int id_position =jo.getInt("id_position");
                             String username = jo.getString("username");
 
@@ -50,6 +57,11 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent adminIntent = new Intent(LoginActivity.this, AdminActivity.class);
                                 adminIntent.putExtra("username",username);
                                 LoginActivity.this.startActivity(adminIntent);
+                            }
+                            else if (code == 200 && id_position == 6){
+                                Intent chefIntent = new Intent(LoginActivity.this, ChefActivity.class);
+                                chefIntent.putExtra("username",username);
+                                LoginActivity.this.startActivity(chefIntent);
                             }
                             else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);

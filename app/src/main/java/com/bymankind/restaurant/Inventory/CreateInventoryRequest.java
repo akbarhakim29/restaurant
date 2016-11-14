@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 public class CreateInventoryRequest extends StringRequest{
-    private final static String CREATE_INVENTORY_REQUEST_URL = "http://192.168.100.37/restoserver/api/insertInventory";
+    private final static String CREATE_INVENTORY_REQUEST_URL = "http://192.168.100.5/restoserver/api/insertInventory";
     private Map<String, String> params;
 
     public CreateInventoryRequest(String name, int amount,String description, Response.Listener<String> listener){

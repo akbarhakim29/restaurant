@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp">
 
         <ImageView
@@ -24,6 +24,14 @@
             android:background="@drawable/restaurant"/>
 
     </LinearLayout>
+
+    <TextView
+        android:text="Restaurant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Title"
+        android:gravity="center"
+        android:textSize="30dp" />
 
     <EditText
         android:layout_width="match_parent"

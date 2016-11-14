@@ -3,9 +3,13 @@
     package="com.bymankind.restaurant">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-feature android:name="android.hardware.camera2" android:required="true"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -83,8 +87,18 @@
         <activity
             android:name=".Employee.CreateEmployee"
             android:label="Create Employee" />
-        <activity android:name=".Table.CreateTable" />
-        <activity android:name=".TypesOfMenu.CreateTypesofmenu"></activity>
+        <activity
+            android:name=".Table.CreateTable"
+            android:label="Create Table"/>
+        <activity
+            android:name=".TypesOfMenu.CreateTypesofmenu"
+            android:label="Create Type of Menu"/>
+        <activity
+            android:name=".ChefActivity"
+            android:label="Chef Activity"/>
+        <activity
+            android:name=".Chef.ListStatusCooked"
+            android:label="List Cooked"/>
     </application>
 
 </manifest>
