@@ -12,15 +12,15 @@ import java.util.Map;
  */
 
 public class UpdateOrderRequest extends StringRequest{
-    private final static String UPDATE_ORDER_REQUEST_URL = "http://192.168.100.5/restoserver/api/updateOrder";
+    private final static String UPDATE_ORDER_REQUEST_URL = "http://192.168.100.9/restoserver/api/updateOrder";
     private Map<String, String> params;
 
-    public UpdateOrderRequest(int id_transaction,int id_table,int id_menu,int quantity,int id_order_status,
+    public UpdateOrderRequest(int id_order,int id_table,int id_menu,int quantity,int id_order_status,
                               String date,String timeOrderPlaced,String timeOrderCooked,String timeOrderChecked,
                               String timeOrderAccepted,String timePaid, Response.Listener<String> listener) {
         super(Request.Method.POST, UPDATE_ORDER_REQUEST_URL, listener, null);
         params = new HashMap<>();
-        params.put("id_transaction", id_transaction + "");
+        params.put("id_order", id_order + "");
         params.put("id_table", id_table + "");
         params.put("id_menu", id_menu+"");
         params.put("quantity", quantity+"");

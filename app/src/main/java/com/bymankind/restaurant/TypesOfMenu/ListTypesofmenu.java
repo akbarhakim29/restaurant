@@ -29,7 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ListTypesofmenu extends AppCompatActivity {
-    public static final String JSON_URL = "http://192.168.100.5/restoserver/api/getAllToM";
+    public static final String JSON_URL = "http://192.168.100.9/restoserver/api/getAllToM";
     private ListView listView;
 
     @Override

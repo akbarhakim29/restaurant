@@ -21,7 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ListOrder extends AppCompatActivity {
-    public static final String JSON_URL = "http://192.168.100.5/restoserver/api/getAllOrder";
+    public static final String JSON_URL = "http://192.168.100.9/restoserver/api/getAllOrder";
     private ListView listView;
 
     @Override
@@ -54,13 +54,13 @@ public class ListOrder extends AppCompatActivity {
     private void showJSON(String json){
         ParseJSONOrder pj = new ParseJSONOrder(json);
         pj.parseJSON();
-        final CustomListOrder cl = new CustomListOrder(this, ParseJSONOrder.id_transaction,ParseJSONOrder.name,ParseJSONOrder.id_table,ParseJSONOrder.description,ParseJSONOrder.menu);
+        final CustomListOrder cl = new CustomListOrder(this, ParseJSONOrder.id_order,ParseJSONOrder.name,ParseJSONOrder.id_table,ParseJSONOrder.description,ParseJSONOrder.menu);
         listView.setAdapter(cl);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(ListOrder.this,"id Transaction = "+cl.getItem(i),Toast.LENGTH_SHORT).show();
-                final String id_transaction =  cl.getItem(i);
+                final String id_order =  cl.getItem(i);
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -72,7 +72,7 @@ public class ListOrder extends AppCompatActivity {
 
                             if (code==200){
 
-                                int id_transaction = jo.getInt("id_transaction");
+                                int id_order = jo.getInt("id_order");
                                 int id_customer = jo.getInt("id_customer");
                                 int id_table = jo.getInt("id_table");
                                 String name = jo.getString("name");
@@ -89,7 +89,7 @@ public class ListOrder extends AppCompatActivity {
 
 
                                 Intent detailOrderIntent = new Intent(ListOrder.this, DetailOrder.class);
-                                detailOrderIntent.putExtra("id_transaction", id_transaction);
+                                detailOrderIntent.putExtra("id_order", id_order);
                                 detailOrderIntent.putExtra("id_customer", id_customer);
                                 detailOrderIntent.putExtra("name", name);
                                 detailOrderIntent.putExtra("id_table", id_table);
@@ -119,7 +119,7 @@ public class ListOrder extends AppCompatActivity {
                         }
                     }
                 };
-                DetailOrderRequest detailOrderRequest = new DetailOrderRequest(id_transaction,responseListener);
+                DetailOrderRequest detailOrderRequest = new DetailOrderRequest(id_order,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(ListOrder.this);
                 queue.add(detailOrderRequest);
             }

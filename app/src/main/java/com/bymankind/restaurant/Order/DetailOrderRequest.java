@@ -12,13 +12,13 @@ import java.util.Map;
  */
 
 public class DetailOrderRequest extends StringRequest{
-    private final static String DETAIL_ORDER_REQUEST_URL = "http://192.168.100.5/restoserver/api/getOrder";
+    private final static String DETAIL_ORDER_REQUEST_URL = "http://192.168.100.9/restoserver/api/getOrder";
     private Map<String, String> params;
 
-    public DetailOrderRequest(String id_transaction, Response.Listener<String> listener){
+    public DetailOrderRequest(String id_order, Response.Listener<String> listener){
         super(Request.Method.POST , DETAIL_ORDER_REQUEST_URL, listener , null);
         params = new HashMap<>();
-        params.put("id_transaction",id_transaction);
+        params.put("id_order",id_order);
     }
 
     @Override

@@ -9,12 +9,14 @@ import android.widget.TextView;
 
 import com.bymankind.restaurant.R;
 
+import java.util.List;
+
 /**
  * Created by Server-Panduit on 11/14/2016.
  */
 
 public class CustomListStatusCooked extends ArrayAdapter<String> {
-    public static String[] id_transaction;
+    public static String[] id_order;
     public static String[] name;
     public static String[] id_table;
     public static String[] menu;
@@ -22,10 +24,10 @@ public class CustomListStatusCooked extends ArrayAdapter<String> {
 
     private Activity context;
 
-    public CustomListStatusCooked(Activity context, String[] id_transaction,String[] name,String[] id_table, String[] menu, String[] quantity) {
-        super(context, R.layout.list_status_cooked, id_transaction);
+    public CustomListStatusCooked(Activity context, String[] id_order,String[] name,String[] id_table, String[] menu, String[] quantity) {
+        super(context, R.layout.list_status_cooked, id_order);
         this.context = context;
-        this.id_transaction = id_transaction;
+        this.id_order = id_order;
         this.name = name;
         this.id_table = id_table;
         this.menu = menu;
@@ -34,21 +36,23 @@ public class CustomListStatusCooked extends ArrayAdapter<String> {
 
     @Override
     public View getView(int pos, View convertView, ViewGroup parent){
-        LayoutInflater inflater = context.getLayoutInflater();
-        View listViewItem = inflater.inflate(R.layout.list_status_cooked, null, true);
-        TextView textViewID = (TextView) listViewItem.findViewById(R.id.tvIDTransaction);
-        TextView textViewName = (TextView) listViewItem.findViewById(R.id.tvCustomer);
-        TextView textViewTable = (TextView) listViewItem.findViewById(R.id.tvIDTable);
-        TextView textViewMenu = (TextView) listViewItem.findViewById(R.id.tvMenu);
-        TextView textViewQuantity = (TextView) listViewItem.findViewById(R.id.tvQuantity);
 
-        textViewID.setText(id_transaction[pos]);
-        textViewName.setText(name[pos]);
-        textViewTable.setText(id_table[pos]);
-        textViewMenu.setText(menu[pos]);
-        textViewQuantity.setText(quantity[pos]);
+        if(convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_status_cooked, parent, true);
+        }
+            TextView textViewID = (TextView) convertView.findViewById(R.id.tvIDTransaction);
+            TextView textViewName = (TextView) convertView.findViewById(R.id.tvCustomer);
+            TextView textViewTable = (TextView) convertView.findViewById(R.id.tvIDTable);
+            TextView textViewMenu = (TextView) convertView.findViewById(R.id.tvMenu);
+            TextView textViewQuantity = (TextView) convertView.findViewById(R.id.tvQuantity);
 
-        return listViewItem;
+            textViewID.setText(id_order[pos]);
+            textViewName.setText(name[pos]);
+            textViewTable.setText(id_table[pos]);
+            textViewMenu.setText(menu[pos]);
+            textViewQuantity.setText(quantity[pos]);
+
+        return convertView;
     }
 
 }

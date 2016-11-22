@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 public class UpdateEmployeeRequest extends StringRequest{
-    private final static String UPDATE_EMPLOYEE_REQUEST_URL = "http://192.168.100.5/restoserver/api/updateEmployee";
+    private final static String UPDATE_EMPLOYEE_REQUEST_URL = "http://192.168.100.9/restoserver/api/updateEmployee";
     private Map<String, String> params;
 
     public UpdateEmployeeRequest(int id_employee, String name,String birthPlace,String birthDay,int id_position,String contractStart,String contractEnd, Response.Listener<String> listener){

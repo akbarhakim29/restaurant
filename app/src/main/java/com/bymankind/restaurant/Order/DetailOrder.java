@@ -41,7 +41,7 @@ public class DetailOrder extends AppCompatActivity {
         final Button btnUpdate = (Button) findViewById(R.id.btnUpdate);
 
         Intent intent = getIntent();
-        int id_transaction = intent.getIntExtra("id_transaction",-1);
+        int id_order = intent.getIntExtra("id_order",-1);
         int  id_customer = intent.getIntExtra("id_customer",-1);
         String name = intent.getStringExtra("name");
         int id_table = intent.getIntExtra("id_table",-1);
@@ -56,7 +56,7 @@ public class DetailOrder extends AppCompatActivity {
         String timeOrderAccepted = intent.getStringExtra("timeOrderAccepted");
         String timePaid = intent.getStringExtra("timePaid");
 
-        etID.setText(id_transaction + "");
+        etID.setText(id_order + "");
         etName.setText(name);
         etIDTable.setText(id_table+"");
         etIDMenu.setText(id_menu+"");
@@ -73,7 +73,7 @@ public class DetailOrder extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final int id_transaction = Integer.parseInt(etID.getText().toString());
+                final int id_order = Integer.parseInt(etID.getText().toString());
                 final int id_table = Integer.parseInt(etIDTable.getText().toString());
                 final int id_menu = Integer.parseInt(etIDMenu.getText().toString());
                 final int quantity = Integer.parseInt(etQuantity.getText().toString());
@@ -105,7 +105,7 @@ public class DetailOrder extends AppCompatActivity {
                         }
                     }
                 };
-                UpdateOrderRequest updateOrderRequest= new UpdateOrderRequest(id_transaction,id_table,id_menu,quantity,id_order_status,date,timeOrderPlaced,timeOrderCooked,timeOrderChecked,timeOrderAccepted,timePaid,responseListener);
+                UpdateOrderRequest updateOrderRequest= new UpdateOrderRequest(id_order,id_table,id_menu,quantity,id_order_status,date,timeOrderPlaced,timeOrderCooked,timeOrderChecked,timeOrderAccepted,timePaid,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(DetailOrder.this);
                 queue.add(updateOrderRequest);
             }
@@ -115,7 +115,7 @@ public class DetailOrder extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final int id_transaction = Integer.parseInt(etID.getText().toString());
+                final int id_order = Integer.parseInt(etID.getText().toString());
                 Response.Listener<String> deleteResponse = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -136,7 +136,7 @@ public class DetailOrder extends AppCompatActivity {
                         }
                     }
                 };
-                DeleteOrderRequest deleteOrderRequest= new DeleteOrderRequest(id_transaction,deleteResponse);
+                DeleteOrderRequest deleteOrderRequest= new DeleteOrderRequest(id_order,deleteResponse);
                 RequestQueue queue = Volley.newRequestQueue(DetailOrder.this);
                 queue.add(deleteOrderRequest);
             }

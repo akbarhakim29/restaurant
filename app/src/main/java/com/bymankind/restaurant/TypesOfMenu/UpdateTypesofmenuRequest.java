@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 public class UpdateTypesofmenuRequest extends StringRequest {
-    private final static String UPDATE_REQUEST_URL = "http://192.168.100.5/restoserver/api/updateToM";
+    private final static String UPDATE_REQUEST_URL = "http://192.168.100.9/restoserver/api/updateToM";
     private Map<String, String> params;
 
     public UpdateTypesofmenuRequest(int id_types_of_menu, String name, Response.Listener<String> listener){

@@ -14,7 +14,7 @@ import com.bymankind.restaurant.R;
  */
 
 public class CustomListOrder extends ArrayAdapter<String>{
-    public static String[] id_transaction;
+    public static String[] id_order;
     public static String[] name;
     public static String[] id_table;
     public static String[] description;
@@ -22,10 +22,10 @@ public class CustomListOrder extends ArrayAdapter<String>{
 
     private Activity context;
 
-    public CustomListOrder(Activity context, String[] id_transaction, String[] name,String[] id_table, String[] description,String[] menu) {
-        super(context, R.layout.list_order_detail, id_transaction);
+    public CustomListOrder(Activity context, String[] id_order, String[] name,String[] id_table, String[] description,String[] menu) {
+        super(context, R.layout.list_order_detail, id_order);
         this.context = context;
-        this.id_transaction = id_transaction;
+        this.id_order = id_order;
         this.name = name;
         this.id_table = id_table;
         this.description = description;
@@ -42,7 +42,7 @@ public class CustomListOrder extends ArrayAdapter<String>{
         TextView textViewStatus = (TextView) listViewItem.findViewById(R.id.tvStatus);
         TextView textViewMenu = (TextView) listViewItem.findViewById(R.id.tvMenu);
 
-        textViewID.setText(id_transaction[pos]);
+        textViewID.setText(id_order[pos]);
         textViewName.setText(name[pos]);
         textViewIDTable.setText(id_table[pos]);
         textViewStatus.setText(description[pos]);
